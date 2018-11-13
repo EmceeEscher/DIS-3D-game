@@ -66,10 +66,14 @@ public class RippleManager : MonoBehaviour {
         }
     }
 
+    public Ripple getRipple() {
+        return ripples[0];
+    }
+
     void DebugRipple() {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            CreateRipple(transform.position.x, transform.position.y, 100f, 1f);
+            CreateRipple(transform.position.x, transform.position.y, 100f, 0.1f);
         }
-        Debug.Log("ripple[0] currRadius: " + ripples[0].currRadius);
+        //Debug.Log("ripple[0] currRadius: " + ripples[0].currRadius);
     }
 }
