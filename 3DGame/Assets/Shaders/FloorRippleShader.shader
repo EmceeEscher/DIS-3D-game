@@ -3,8 +3,7 @@
 	// defining the main properties as exposed in the inspector
     Properties
     {
-        _Ripple ("Center of ripple", Vector) = (0.0, 0.0, 0.0, 0.0) //centerX, radius, centerZ, thickness
-        // TODO: remove this, set in script
+
     }
     // start first subshader (there is only one, but there could be multible)
     SubShader
