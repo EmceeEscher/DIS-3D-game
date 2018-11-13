@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FillerScript : MonoBehaviour {
+public class FloorRippleHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
