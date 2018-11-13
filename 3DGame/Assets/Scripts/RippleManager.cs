@@ -66,8 +66,8 @@ public class RippleManager : MonoBehaviour {
         }
     }
 
-    public Ripple getRipple() {
-        return ripples[0];
+    public List<Ripple> getRipples() {
+        return ripples;
     }
 
     void DebugRipple() {

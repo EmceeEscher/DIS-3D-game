@@ -25,7 +25,6 @@
             // struct defining the Input for the VertexShader
             struct vertexInput
             {
-                //float4 _Ripple : TEXCOORD0; // TODO: find better option than TEXCOORD0?
                 float4 position : POSITION; // The : POSITION means what semantic to put this variable in. (what it is intendet for)
             };
 
@@ -34,13 +33,13 @@
             {
                 float4 position : SV_POSITION;
                 float4 worldPosition : POSITION1;
-                //float4 _Ripple : TEXCOORD0;
             };
+            
+            float4 _Ripples[3];
 
             vertexOutput vertexShader (vertexInput vInput)
             {
                 vertexOutput vOutput;
-                //vOutput._Ripple = vInput._Ripple;
 
                 // the vertex data is comming in in local space, we need to transform it into clip space!
                 // first into world space:
@@ -57,22 +56,22 @@
                 return vOutput;
             }
             
-            float4 _Ripple;
-            
             fixed4 fragmentShader (vertexOutput vOutput) : SV_Target
             {
                 fixed4 col = fixed4(0,0,0,1); //black (default)
                 
                 // calculate if point is on current ring
-                float4 center = float4(_Ripple.x, vOutput.worldPosition.y, _Ripple.z, vOutput.worldPosition.w);
-                float distanceToCenter = distance(center, vOutput.worldPosition);
-                float diff = distanceToCenter - _Ripple.y;
-                
-                // if point is within thickness of current ring, color it   
-                if (abs(diff) < _Ripple.w) {
-                    col = fixed4(1,0,0,1); //red
+                for (int i = 0; i < 3; i++) {
+                    float4 center = float4(_Ripples[i].x, vOutput.worldPosition.y, _Ripples[i].z, vOutput.worldPosition.w);
+                    float distanceToCenter = distance(center, vOutput.worldPosition);
+                    float diff = distanceToCenter - _Ripples[i].y;
+                    
+                    // if point is within thickness of current ring, color it   
+                    if (abs(diff) < _Ripples[i].w) {
+                        col = fixed4(1,0,0,1); //red
+                        break;
+                    }
                 }
-                
                 
                 return col;
             }

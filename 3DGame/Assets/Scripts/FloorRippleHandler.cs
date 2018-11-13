@@ -5,22 +5,39 @@ using UnityEngine;
 public class FloorRippleHandler : MonoBehaviour {
 
     public RippleManager rippleManager;
+    public int maxNumRipples = 3;
     public Renderer renderer;
+
+    Vector4[] rippleData;
 
 	// Use this for initialization
 	void Start () {
         renderer = GetComponent<Renderer>();
+        rippleData = new Vector4[maxNumRipples];
+        for (int i = 0; i < maxNumRipples; i++) {
+            rippleData[i] = new Vector4(0f, 0f, 0f, 0f);
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        Ripple ripple = rippleManager.getRipple();
-        Vector4 rippleData;
-        if (ripple.isActive) {
-            rippleData = new Vector4(ripple.centerX, ripple.currRadius, ripple.centerZ, ripple.thickness);
-        } else {
-            rippleData = new Vector4(0.0f, 0.0f, 0.0f, 0.0f);
+        List<Ripple> ripples = rippleManager.getRipples();
+        for (int i = 0; i < maxNumRipples; i++)
+        {
+            Ripple ripple = ripples[i];
+            if (ripple.isActive)
+            {
+                rippleData[i].x = ripple.centerX;
+                rippleData[i].z = ripple.centerZ;
+                rippleData[i].y = ripple.currRadius;
+                rippleData[i].w = ripple.thickness;
+            } else {
+                rippleData[i].x = 0f;
+                rippleData[i].z = 0f;
+                rippleData[i].y = 0f;
+                rippleData[i].w = 0f;
+            }
         }
-        renderer.material.SetVector("_Ripple", rippleData);
+        renderer.material.SetVectorArray("_Ripples", rippleData);
 	}
 }

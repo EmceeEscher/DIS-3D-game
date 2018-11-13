@@ -356,6 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rippleManager: {fileID: 1867462601}
+  maxNumRipples: 3
   renderer: {fileID: 0}
 --- !u!1 &1867462600
 GameObject:
@@ -384,7 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672220274308749fb81c2480babb7d7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxNumRipples: 1
+  maxNumRipples: 3
   rippleSpeed: 0.5
 --- !u!4 &1867462602
 Transform:
