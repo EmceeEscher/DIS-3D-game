@@ -1,4 +1,4 @@
-﻿Shader "Ripples/ObjectRippleShader"
+﻿Shader "Ripples/MonsterRippleShader"
 {
     // defining the main properties as exposed in the inspector
     Properties
@@ -31,6 +31,8 @@
             };
             
             float _VibrationProgress;
+			int _NumRipples = 3; // must be less than the size of the _Ripples array below
+			float4 _Ripples[50];
 
             vertexOutput vertexShader (vertexInput vInput)
             {
@@ -53,7 +55,20 @@
             
             fixed4 fragmentShader (vertexOutput vOutput) : SV_Target
             {
-                fixed4 col = fixed4(0.5,0,0,1); //red (default)
+                fixed4 col = fixed4(1,0.5,0,1); //orange
+
+				// calculate if point is on current ring
+				for (int i = 0; i < _NumRipples; i++) {
+					float4 center = float4(_Ripples[i].x, vOutput.worldPosition.y, _Ripples[i].z, vOutput.worldPosition.w);
+					float distanceToCenter = distance(center, vOutput.worldPosition);
+					float diff = distanceToCenter - _Ripples[i].y;
+
+					// if point is within thickness of current ring, color it   
+					if (abs(diff) < _Ripples[i].w) {
+						col = fixed4(1, 0, 0, 1); //red
+						break;
+					}
+				}
                 
                 return col;
             }
