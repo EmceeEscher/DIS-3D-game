@@ -16,7 +16,10 @@ public class ObjectRippleHandler : MonoBehaviour {
     void Start()
     {
         renderer = GetComponent<Renderer>();
-        renderer.material.SetFloat("_VibrationProgress", 0.0f);
+        renderer.material.SetFloat("_VibrationProgress", -1.0f);
+
+        Mesh mesh = GetComponent<MeshFilter>().mesh;
+        renderer.material.SetFloat("_MaxMeshY", mesh.bounds.max.y);
     }
 
     // Update is called once per frame
@@ -34,12 +37,12 @@ public class ObjectRippleHandler : MonoBehaviour {
             if (currVibrationTime > maxVibrationTime)
             {
                 isVibrating = false;
-                renderer.material.SetFloat("_VibrationProgress", 0.0f);
+                renderer.material.SetFloat("_VibrationProgress", -1.0f);
             }
             else
             {
                 currVibrationTime += Time.deltaTime;
-                renderer.material.SetFloat("_VibrationProgress", currVibrationTime / maxVibrationTime);
+                renderer.material.SetFloat("_VibrationProgress", (currVibrationTime / maxVibrationTime) * 1.2f);
             }
         }
     }

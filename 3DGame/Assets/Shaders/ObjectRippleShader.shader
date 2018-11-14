@@ -27,21 +27,28 @@
             struct vertexOutput
             {
                 float4 position : SV_POSITION;
-                float4 worldPosition : POSITION1;
+                float4 localPosition : POSITION1;
             };
             
             float _VibrationProgress;
+            float _MaxMeshY;
 
             vertexOutput vertexShader (vertexInput vInput)
             {
                 vertexOutput vOutput;
                 
-                // local space into world space transformation:
-                vOutput.position = mul(unity_ObjectToWorld, vInput.position);
-                vOutput.worldPosition = vOutput.position;
+                vOutput.localPosition = vInput.position;
+                vOutput.position = vInput.position;
                 
-                // shift side to side while vibrating:
-                // do a thing here
+                if (_VibrationProgress > -1.0) {
+                    float relativeHeight = (vOutput.position.y + _MaxMeshY) / (_MaxMeshY * 2);
+                    if (abs(relativeHeight - _VibrationProgress) < 0.5) {
+                        vOutput.position.x = vOutput.position.x * (1 + (0.5 - abs(relativeHeight - _VibrationProgress)));
+                    } 
+                }
+                
+                // local space into world space transformation:
+                vOutput.position = mul(unity_ObjectToWorld, vOutput.position);
                 
                 // world space into view space transformation:
                 vOutput.position = mul(UNITY_MATRIX_V, vOutput.position);
@@ -53,7 +60,16 @@
             
             fixed4 fragmentShader (vertexOutput vOutput) : SV_Target
             {
-                fixed4 col = fixed4(1,0,0,1); //red (default)
+                fixed4 col = fixed4(0,0,0,1); //black (default)
+                
+                if (_VibrationProgress > -1.0) {
+                    float relativeHeight = (vOutput.localPosition.y + _MaxMeshY) / (_MaxMeshY * 2);
+                    if (abs(relativeHeight - _VibrationProgress) < 0.5) {
+                        col.x += (0.5 - abs(relativeHeight - _VibrationProgress));
+                        col.y = 1 - (0.5 - abs(relativeHeight - _VibrationProgress));
+                        col.z += (0.5 - abs(relativeHeight - _VibrationProgress));
+                    } 
+                }
                 
                 return col;
             }
