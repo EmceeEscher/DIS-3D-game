@@ -31,8 +31,7 @@
             };
             
             float _VibrationProgress;
-            float _MinMeshPoint;
-            float _MaxMeshPoint;
+            float _MaxMeshY;
 
             vertexOutput vertexShader (vertexInput vInput)
             {
@@ -42,7 +41,7 @@
                 vOutput.position = vInput.position;
                 
                 if (_VibrationProgress > -1.0) {
-                    float relativeHeight = (vOutput.position.y + _MaxMeshPoint) / (_MaxMeshPoint * 2);
+                    float relativeHeight = (vOutput.position.y + _MaxMeshY) / (_MaxMeshY * 2);
                     if (abs(relativeHeight - _VibrationProgress) < 0.5) {
                         vOutput.position.x = vOutput.position.x * (1 + (0.5 - abs(relativeHeight - _VibrationProgress)));
                     } 
@@ -61,10 +60,10 @@
             
             fixed4 fragmentShader (vertexOutput vOutput) : SV_Target
             {
-                fixed4 col = fixed4(0,0,0,1); //green (default)
+                fixed4 col = fixed4(0,0,0,1); //black (default)
                 
                 if (_VibrationProgress > -1.0) {
-                    float relativeHeight = (vOutput.localPosition.y + _MaxMeshPoint) / (_MaxMeshPoint * 2);
+                    float relativeHeight = (vOutput.localPosition.y + _MaxMeshY) / (_MaxMeshY * 2);
                     if (abs(relativeHeight - _VibrationProgress) < 0.5) {
                         col.x += (0.5 - abs(relativeHeight - _VibrationProgress));
                         col.y = 1 - (0.5 - abs(relativeHeight - _VibrationProgress));
