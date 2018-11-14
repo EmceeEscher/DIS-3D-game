@@ -72,7 +72,7 @@ public class RippleManager : MonoBehaviour {
 
     void DebugRipple() {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            CreateRipple(transform.position.x, transform.position.y, 100f, 0.1f);
+            CreateRipple(transform.position.x, transform.position.y, 100f, 0.5f);
         }
         //Debug.Log("ripple[0] currRadius: " + ripples[0].currRadius);
     }
