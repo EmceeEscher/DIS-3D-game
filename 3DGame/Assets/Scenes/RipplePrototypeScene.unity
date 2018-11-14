@@ -249,13 +249,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1041299012}
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
+  m_LocalRotation: {x: 0.24034573, y: -0, z: -0, w: 0.9706873}
   m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 27.814001, y: 0, z: 0}
 --- !u!1 &1102760254
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,8 +356,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rippleManager: {fileID: 1867462601}
-  maxNumRipples: 3
-  renderer: {fileID: 0}
 --- !u!1 &1519952350
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,8 +387,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rippleManager: {fileID: 1867462601}
-  maxNumRipples: 3
-  renderer: {fileID: 0}
 --- !u!65 &1519952352
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -444,20 +440,20 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1519952350}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1519952355
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1519952350}
-  m_LocalRotation: {x: 0.0017507504, y: -0.0010087688, z: 0.00066859083, w: 0.9999978}
-  m_LocalPosition: {x: -0.35, y: 2.48, z: 8.47}
+  m_LocalRotation: {x: 0.023113748, y: 0.049071234, z: -0.0066854847, w: 0.9985054}
+  m_LocalPosition: {x: -0.35, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0.201, y: -0.115, z: 0.076000005}
+  m_LocalEulerAnglesHint: {x: 2.683, y: 5.6120005, z: -0.63600004}
 --- !u!1 &1867462600
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672220274308749fb81c2480babb7d7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxNumRipples: 3
+  maxNumRipples: 5
   rippleSpeed: 2
 --- !u!4 &1867462602
 Transform:
