@@ -19,8 +19,7 @@ public class ObjectRippleHandler : MonoBehaviour {
         renderer.material.SetFloat("_VibrationProgress", -1.0f);
 
         Mesh mesh = GetComponent<MeshFilter>().mesh;
-        renderer.material.SetFloat("_MinMeshPoint", mesh.bounds.min.y);
-        renderer.material.SetFloat("_MaxMeshPoint", mesh.bounds.max.y);
+        renderer.material.SetFloat("_MaxMeshY", mesh.bounds.max.y);
     }
 
     // Update is called once per frame
