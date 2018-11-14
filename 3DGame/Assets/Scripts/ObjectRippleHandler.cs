@@ -16,11 +16,27 @@ public class ObjectRippleHandler : MonoBehaviour {
     void Start()
     {
         renderer = GetComponent<Renderer>();
-        renderer.material.SetFloat("_VibrationProgress", 0.0f);
+        renderer.material.SetFloat("_VibrationProgress", -1.0f); // TODO will shader ignore these vars or break?
+
+        Mesh mesh = GetComponent<MeshFilter>().mesh;
+        renderer.material.SetFloat("_MaxMeshY", mesh.bounds.max.y); // TODO more customizable for different models
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void Visuals()
+    {
+        if (isVibrating) {
+            if (currVibrationTime > maxVibrationTime) {
+                isVibrating = false;
+                renderer.material.SetFloat("_VibrationProgress", -1.0f);
+            }
+            else {
+                currVibrationTime += Time.deltaTime;
+                renderer.material.SetFloat("_VibrationProgress", (currVibrationTime / maxVibrationTime) * 1.2f);
+            }
+        }
+    }
+
+    public virtual void UpdateFunction()
     {
         List<Ripple> ripples = rippleManager.getRipples();
         foreach (Ripple ripple in ripples) {
@@ -30,18 +46,15 @@ public class ObjectRippleHandler : MonoBehaviour {
             }
         }
 
-        if (isVibrating) {
-            if (currVibrationTime > maxVibrationTime)
-            {
-                isVibrating = false;
-                renderer.material.SetFloat("_VibrationProgress", 0.0f);
-            }
-            else
-            {
-                currVibrationTime += Time.deltaTime;
-                renderer.material.SetFloat("_VibrationProgress", currVibrationTime / maxVibrationTime);
-            }
-        }
+        Visuals();
+    }
+    
+    // Update is called once per frame
+    void Update()
+    {
+        UpdateFunction();
+
+        
     }
 
     float calculateDistance(Ripple ripple) {

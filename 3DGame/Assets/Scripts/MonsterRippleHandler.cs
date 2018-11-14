@@ -10,5 +10,11 @@ public class MonsterRippleHandler : ObjectRippleHandler {
         Debug.Log("MonsterRippleHandler constructed.");
     }
 
+    public override void Visuals()
+    {
+        base.Visuals();
+        // change at wiiiiill
+    }
+
 
 }
