@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FillerScript : MonoBehaviour {
+public class SimplePatrol : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
