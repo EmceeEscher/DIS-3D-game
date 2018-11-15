@@ -301,6 +301,48 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1001 &375552442
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4602423248147526, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602423248147526, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602423248147526, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602423248147526, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.26902342
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602423248147526, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602423248147526, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602423248147526, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.9631337
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602423248147526, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &748697757
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,6 +622,7 @@ GameObject:
   - component: {fileID: 1523166489}
   - component: {fileID: 1523166488}
   - component: {fileID: 1523166493}
+  - component: {fileID: 1523166494}
   m_Layer: 0
   m_Name: First Person Controller
   m_TagString: Player
@@ -772,50 +815,114 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36cce50725fd4d1286a26b56a7e0584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stepFrequency: 2
+  stepFrequency: 1
   distanceThreshold: 0.5
   rippleRange: 20
   rippleThickness: 1
+  footstepClips:
+  - {fileID: 8300000, guid: 7800f7bda4bc68f43a86d88827cd082a, type: 3}
+  - {fileID: 8300000, guid: c7449f353fcce324787a755ffee82b68, type: 3}
+  - {fileID: 8300000, guid: 62ac9bf37e313514e81b24534d632d69, type: 3}
+  - {fileID: 8300000, guid: de00eccdf54c99c40b5bd4bddfb8502c, type: 3}
   isMoving: 0
---- !u!1 &1867462600
-GameObject:
+--- !u!82 &1523166494
+AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1867462602}
-  - component: {fileID: 1867462601}
-  m_Layer: 0
-  m_Name: RippleManager
-  m_TagString: RippleManager
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1867462601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1867462600}
+  m_GameObject: {fileID: 1523166487}
   m_Enabled: 1
-  m_EditorHideFlags: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1867462601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114924084911798366, guid: 2628aa69c63b247dfb90cdba9645cfbd,
+    type: 2}
+  m_PrefabInternal: {fileID: 375552442}
   m_Script: {fileID: 11500000, guid: 672220274308749fb81c2480babb7d7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxNumRipples: 5
-  rippleSpeed: 2
---- !u!4 &1867462602
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1867462600}
-  m_LocalRotation: {x: -0.26902342, y: -0, z: -0, w: 0.9631337}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -31.212002, y: 0, z: 0}
