@@ -383,10 +383,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1519952350}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e0b6ddf76bb4df9b4d0e5f08b4c74c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9dce869c1fde741ed95f46d7875de7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rippleManager: {fileID: 1867462601}
+  maxVibrationTime: 1
 --- !u!65 &1519952352
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -440,7 +441,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1519952350}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1519952355
 Transform:
   m_ObjectHideFlags: 0
