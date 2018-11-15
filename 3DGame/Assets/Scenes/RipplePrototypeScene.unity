@@ -152,6 +152,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114924084911798366, guid: 2628aa69c63b247dfb90cdba9645cfbd,
+        type: 2}
+      propertyPath: rippleSpeed
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
   m_IsPrefabAsset: 0
@@ -351,7 +356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dce869c1fde741ed95f46d7875de7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rippleManager: {fileID: 1867462601}
   maxVibrationTime: 1
 --- !u!65 &1519952352
 BoxCollider:

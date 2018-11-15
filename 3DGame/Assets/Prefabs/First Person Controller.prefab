@@ -312,9 +312,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stepFrequency: 1
-  distanceThreshold: 0.5
   rippleRange: 10
   rippleThickness: 0.3
+  rippleOffset: 2.5
   footstepClips:
   - {fileID: 8300000, guid: 7800f7bda4bc68f43a86d88827cd082a, type: 3}
   - {fileID: 8300000, guid: c7449f353fcce324787a755ffee82b68, type: 3}
