@@ -8,9 +8,9 @@ public class ObjectRippleHandler : MonoBehaviour {
     public RippleManager rippleManager;
     public float maxVibrationTime = 5.0f;
 
-    Renderer renderer;
-    float currVibrationTime = 0.0f;
-    bool isVibrating = false;
+    protected Renderer renderer;
+    protected float currVibrationTime = 0.0f;
+    protected bool isVibrating = false;
 
     // Use this for initialization
     void Start()
@@ -24,6 +24,7 @@ public class ObjectRippleHandler : MonoBehaviour {
 
     public virtual void Visuals()
     {
+        // Has a ripple crossed the object?
         if (isVibrating) {
             if (currVibrationTime > maxVibrationTime) {
                 isVibrating = false;
