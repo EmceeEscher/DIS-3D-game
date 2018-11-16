@@ -129,7 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96b29ef249846440a1f8a1fb664d5b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rippleManager: {fileID: 1867462601}
   maxVibrationTime: 5
 --- !u!1 &748697757
 GameObject:
@@ -373,7 +372,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e0b6ddf76bb4df9b4d0e5f08b4c74c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rippleManager: {fileID: 1867462601}
+  rippleManager: {fileID: 1359848878}
+--- !u!114 &1359848878 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114924084911798366, guid: 2628aa69c63b247dfb90cdba9645cfbd,
+    type: 2}
+  m_PrefabInternal: {fileID: 2097485715}
+  m_Script: {fileID: 11500000, guid: 672220274308749fb81c2480babb7d7d, type: 3}
 --- !u!1 &1519952350
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e0b6ddf76bb4df9b4d0e5f08b4c74c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rippleManager: {fileID: 1867462601}
+  rippleManager: {fileID: 0}
 --- !u!65 &1519952352
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -484,7 +489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dce869c1fde741ed95f46d7875de7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rippleManager: {fileID: 1867462601}
   maxVibrationTime: 5
 --- !u!1001 &1695647463
 Prefab:
@@ -545,45 +549,49 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eefde4ae97de6e94a9a12de829782326, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1867462600
-GameObject:
+--- !u!1001 &2097485715
+Prefab:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1867462602}
-  - component: {fileID: 1867462601}
-  m_Layer: 0
-  m_Name: RippleManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1867462601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1867462600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 672220274308749fb81c2480babb7d7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxNumRipples: 5
-  rippleSpeed: 2
---- !u!4 &1867462602
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1867462600}
-  m_LocalRotation: {x: -0.26902342, y: -0, z: -0, w: 0.9631337}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -31.212002, y: 0, z: 0}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4602423248147526, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602423248147526, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602423248147526, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602423248147526, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.26902342
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602423248147526, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602423248147526, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602423248147526, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.9631337
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602423248147526, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422080019084322, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+      propertyPath: m_Name
+      value: RippleManager (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2628aa69c63b247dfb90cdba9645cfbd, type: 2}
+  m_IsPrefabAsset: 0

@@ -1,11 +1,15 @@
 ﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
+/* 
+* Utilizes TV Static Shader by Unity Forum User dandeentremont.
+* https://forum.unity.com/threads/tv-static-shader.354472/
+*/
+
 Shader "Ripples/MonsterRippleShader"
 {
 	// defining the main properties as exposed in the inspector
 	Properties
 	{
-		// for static @ dandeentremont https://forum.unity.com/threads/tv-static-shader.354472/
 		_ColorA ("Color A", Color) = (1,1,1,1)
 		_ColorB ("Color B", Color) = (0,0,0,0)
 
@@ -25,7 +29,7 @@ Shader "Ripples/MonsterRippleShader"
 
 			#pragma vertex vertexShader
 			#pragma fragment fragmentShader
-			#pragma target 3.0 // @dandeentremont
+			#pragma target 3.0
 
 			#include "UnityCG.cginc"
 
@@ -35,7 +39,6 @@ Shader "Ripples/MonsterRippleShader"
 				return frac((sin(dot(co.xy , float2(12.345 * _Time.w, 67.890 * _Time.w))) * 12345.67890 + _Time.w));
 			 }
 			
-			// for static
 			fixed4 _ColorA;
 			fixed4 _ColorB;
 
@@ -46,7 +49,6 @@ Shader "Ripples/MonsterRippleShader"
 			struct vertexInput
 			{
 				float4 position : POSITION;
-				// dan add's texcoord stuff
 			};
 
 			struct vertexOutput
@@ -62,20 +64,10 @@ Shader "Ripples/MonsterRippleShader"
 			vertexOutput vertexShader(vertexInput vInput)
 			{
 				vertexOutput vOutput;
-				UNITY_INITIALIZE_OUTPUT(vertexOutput, vOutput); //static
+				UNITY_INITIALIZE_OUTPUT(vertexOutput, vOutput);
 
 				vOutput.localPosition = vInput.position;
 				vOutput.position = vInput.position;
-
-				// dan
-				//get the model's origin, so we can calculate the distance to camera (and scale the noise accordingly)
-				//float4 modelOrigin = mul(unity_ObjectToWorld, float4(0.0, 0.0, 0.0, 1.0));
-
-				//vOutput.camDist.x = distance(_WorldSpaceCameraPos.xyz, modelOrigin.xyz);
-				// grayscale
-				//vOutput.camDist.x = lerp(1.0, vOutput.camDist.x, _ScaleWithZoom);
-
-				//
 
 				if (_VibrationProgress > -1.0) {
 					float relativeHeight = (vOutput.position.y + _MaxMeshY) / (_MaxMeshY * 2);
@@ -105,13 +97,6 @@ Shader "Ripples/MonsterRippleShader"
 				fixed4 col = fixed4(0.5,0.5,0.5,1);
 
 				if (_VibrationProgress > -1.0) {
-					// default
-					/*float relativeHeight = (vOutput.localPosition.y + _MaxMeshY) / (_MaxMeshY * 2);
-					if (abs(relativeHeight - _VibrationProgress) < 0.5) {
-						col.x += (0.5 - abs(relativeHeight - _VibrationProgress));
-						col.y = 1 - (0.5 - abs(relativeHeight - _VibrationProgress));
-						col.z += (0.5 - abs(relativeHeight - _VibrationProgress));
-					}*/
 
 					// static 
 					fixed4 sc = fixed4((screenPos.xy), 0.0, 1.0);

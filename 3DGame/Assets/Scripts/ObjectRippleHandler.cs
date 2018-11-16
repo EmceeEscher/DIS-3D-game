@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class ObjectRippleHandler : MonoBehaviour {
 
-    public RippleManager rippleManager;
     public float maxVibrationTime = 5.0f;
 
     protected Renderer renderer;
+    RippleManager rippleManager;
     protected float currVibrationTime = 0.0f;
     protected bool isVibrating = false;
 
@@ -20,6 +20,8 @@ public class ObjectRippleHandler : MonoBehaviour {
 
         Mesh mesh = GetComponent<MeshFilter>().mesh;
         renderer.material.SetFloat("_MaxMeshY", mesh.bounds.max.y); // TODO more customizable for different models
+
+        rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
     }
 
     public virtual void Visuals()
@@ -41,7 +43,9 @@ public class ObjectRippleHandler : MonoBehaviour {
     {
         List<Ripple> ripples = rippleManager.getRipples();
         foreach (Ripple ripple in ripples) {
-            if (Mathf.Abs(calculateDistance(ripple) - ripple.currRadius) < ripple.thickness && !isVibrating) {
+            if (ripple.isActive
+                && Mathf.Abs(calculateDistance(ripple) - ripple.currRadius) < ripple.thickness 
+                && !isVibrating) {
                 isVibrating = true;
                 currVibrationTime = 0.0f;
             }
@@ -54,8 +58,6 @@ public class ObjectRippleHandler : MonoBehaviour {
     void Update()
     {
         UpdateFunction();
-
-        
     }
 
     float calculateDistance(Ripple ripple) {
