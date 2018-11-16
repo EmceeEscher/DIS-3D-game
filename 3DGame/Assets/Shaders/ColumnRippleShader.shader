@@ -1,4 +1,4 @@
-﻿Shader "Ripples/ObjectRippleShader"
+﻿Shader "Ripples/ColumnRippleShader"
 {
     // defining the main properties as exposed in the inspector
     Properties
@@ -46,11 +46,11 @@
                     float distanceFromHeight = abs(relativeHeight - _VibrationProgress);
                     if (distanceFromHeight < _WidthOfRippleEffect) {
                         if (distanceFromHeight < (_WidthOfRippleEffect * 0.4)) {
-                            vOutput.position.x = vOutput.position.x * (1 + (_WidthOfRippleEffect * 0.4 - distanceFromHeight));
+                            vOutput.position.x = vOutput.position.x * (1 + (_WidthOfRippleEffect * 1.5 - distanceFromHeight));
                         } else if (distanceFromHeight < (_WidthOfRippleEffect * 0.8)) {
-                            vOutput.position.x = vOutput.position.x * (1 - (_WidthOfRippleEffect * 0.4 - distanceFromHeight));
+                            vOutput.position.x = vOutput.position.x * (1 - (_WidthOfRippleEffect * 1.5 - distanceFromHeight));
                         } else {
-                            vOutput.position.x = vOutput.position.x * (1 + (_WidthOfRippleEffect * 0.4 - distanceFromHeight));
+                            vOutput.position.x = vOutput.position.x * (1 + (_WidthOfRippleEffect * 1.5 - distanceFromHeight));
                         }
                     } 
                 }

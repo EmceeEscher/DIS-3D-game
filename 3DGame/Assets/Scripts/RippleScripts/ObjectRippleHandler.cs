@@ -7,10 +7,11 @@ public class ObjectRippleHandler : MonoBehaviour {
 
     public float maxVibrationTime = 5.0f;
 
-    Renderer renderer;
     RippleManager rippleManager;
-    float currVibrationTime = 0.0f;
-    bool isVibrating = false;
+
+    protected Renderer renderer;
+    protected float currVibrationTime = 0.0f;
+    protected bool isVibrating = false;
 
     // Use this for initialization
     void Start()
