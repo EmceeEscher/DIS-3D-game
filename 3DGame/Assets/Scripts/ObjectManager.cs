@@ -12,8 +12,8 @@ public class ObjectManager : MonoBehaviour {
     public float visionDistance = 5F;
     public LayerMask layerMask;
 
-    // Check whatever is in front. It returns true if it hits an object with the interactable layer. Interactable
-    // Objects are either "Switchable" or "Pickable"
+    // Check whatever is in front. It returns true if it hits an object with the interactable layer. 
+    // Interactable objects are either "Switchable" or "Pickable"
     GameObject CheckInFront() {
         RaycastHit hit;
         // Raycast checking if there is an object (that has 'interactable' layer) from visiondistance, 
@@ -35,10 +35,6 @@ public class ObjectManager : MonoBehaviour {
         Debug.Log("Switched");
     }
 
-    public void PickUp(GameObject item) {
-        Debug.Log("PickedUp");
-    }
-
     void Start () {
             
 	}
@@ -51,15 +47,15 @@ public class ObjectManager : MonoBehaviour {
         }
 
         // Sets item to be whatever is interacting with the ray. If false, it's null.
-        item = CheckInFront();
 
         // Press E to interact. 
 
 
-        if (item != null)
+        // If the item is picked up and it is a type of Pickable, then pressing E will throw that item
+        if (Input.GetKey(KeyCode.E))
         {
-            // If the item is picked up and it is a type of Pickable, then pressing E will throw that item
-            if (Input.GetKey(KeyCode.E))
+            item = CheckInFront();
+            if (item != null)
             {
                 if (item.GetComponent<Pickable>() != null) Throw(item);
                 else if (item.GetComponent<Switchable>() != null) TurnSwitch(item);

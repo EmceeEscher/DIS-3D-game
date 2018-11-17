@@ -14,18 +14,23 @@ public class Pickable : MonoBehaviour {
     // Communicates to the object that this object is now being hit by the Raycast
     // (see CheckInFront method in ObjectManager)
     public void OnPickup(Collider col, Rigidbody rbdy) {
+
         pickedUp = true;
 
         // Disable the collider and rigidbody when picked up.
         col.enabled = !col.enabled;
         rbdy.isKinematic = !rbdy.isKinematic;
+
+        transform.position = Vector3.zero;
     }
 
-    // The player would collide with the player 
+
+    // The player would collide with the object
     private void OnCollisionEnter(Collision collision)
     {
-
+        Debug.Log("collided");
         OnPickup(col, rbdy);
+
 
         // transform this so it is in front of the player
     }

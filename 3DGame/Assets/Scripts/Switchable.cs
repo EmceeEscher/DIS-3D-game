@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Switchable : MonoBehaviour {
+    public bool IsEnabled = true;
+
 
 	// Use this for initialization
 	void Start () {
