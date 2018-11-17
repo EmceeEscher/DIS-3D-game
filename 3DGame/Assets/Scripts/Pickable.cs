@@ -21,7 +21,7 @@ public class Pickable : MonoBehaviour {
         col.enabled = !col.enabled;
         rbdy.isKinematic = !rbdy.isKinematic;
 
-        transform.position = Vector3.zero;
+        
     }
 
 
@@ -30,7 +30,6 @@ public class Pickable : MonoBehaviour {
     {
         Debug.Log("collided");
         OnPickup(col, rbdy);
-
 
         // transform this so it is in front of the player
     }

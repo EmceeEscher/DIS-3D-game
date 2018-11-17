@@ -28,7 +28,7 @@ public class ObjectManager : MonoBehaviour {
     }
 
     public void Throw(GameObject item) {
-        Debug.Log("Thrown");
+        
     }
 
     public void TurnSwitch(GameObject item) {
