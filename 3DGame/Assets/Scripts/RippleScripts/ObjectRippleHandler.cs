@@ -6,6 +6,11 @@ using UnityEngine;
 public class ObjectRippleHandler : MonoBehaviour {
 
     public float maxVibrationTime = 5.0f;
+    public float minVibrationHeight = -0.2f;
+    public float maxVibrationHeight = 1.2f;
+    public float rippleWidth = 0.5f;
+    public float ripplePeriod = 25.0f;
+    public float rippleAmplitude = 3.0f;
 
     RippleManager rippleManager;
 
@@ -22,6 +27,10 @@ public class ObjectRippleHandler : MonoBehaviour {
         Mesh mesh = GetComponent<MeshFilter>().mesh;
         renderer.material.SetFloat("_MaxMeshY", mesh.bounds.max.y); // TODO more customizable for different models
 
+        renderer.material.SetFloat("_WidthOfRippleEffect", rippleWidth);
+        renderer.material.SetFloat("_PeriodOfRippleEffect", ripplePeriod);
+        renderer.material.SetFloat("_AmplitudeOfRippleEffect", rippleAmplitude);
+
         rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
     }
 
@@ -34,7 +43,11 @@ public class ObjectRippleHandler : MonoBehaviour {
             }
             else {
                 currVibrationTime += Time.deltaTime;
-                renderer.material.SetFloat("_VibrationProgress", (currVibrationTime / maxVibrationTime) * 1.2f);
+                renderer.material.SetFloat("_VibrationProgress",
+                                           Mathf.Lerp(
+                                               minVibrationHeight,
+                                               maxVibrationHeight,
+                                               (currVibrationTime / maxVibrationTime)));
             }
         }
     }

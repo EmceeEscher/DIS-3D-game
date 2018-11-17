@@ -1,9 +1,11 @@
 ﻿Shader "Ripples/ObjectRippleShader"
 {
-    // defining the main properties as exposed in the inspector
+   // defining the main properties as exposed in the inspector
     Properties
     {
-        _WidthOfRippleEffect ("WidthOfRippleEffect", float) = 0.5
+        _WidthOfRippleEffect ("vertical width of the ripple effect", float) = 0.5
+        _PeriodOfRippleEffect ("period coeffecient of sine curve ripple effect (period is 2pi/this value", float) = 25.0
+        _AmplitudeOfRippleEffect ("amplitude of sine curve ripple effect", float) = 3.0
     }
     // start first subshader (there is only one, but there could be multible)
     SubShader
@@ -33,6 +35,8 @@
             float _VibrationProgress;
             float _MaxMeshY;
             float _WidthOfRippleEffect;
+            float _PeriodOfRippleEffect;
+            float _AmplitudeOfRippleEffect;
 
             vertexOutput vertexShader (vertexInput vInput)
             {
@@ -45,13 +49,9 @@
                     float relativeHeight = (vOutput.position.y + _MaxMeshY) / (_MaxMeshY * 2);
                     float distanceFromHeight = abs(relativeHeight - _VibrationProgress);
                     if (distanceFromHeight < _WidthOfRippleEffect) {
-                        if (distanceFromHeight < (_WidthOfRippleEffect * 0.4)) {
-                            vOutput.position.x = vOutput.position.x * (1 + (_WidthOfRippleEffect * 0.4 - distanceFromHeight));
-                        } else if (distanceFromHeight < (_WidthOfRippleEffect * 0.8)) {
-                            vOutput.position.x = vOutput.position.x * (1 - (_WidthOfRippleEffect * 0.4 - distanceFromHeight));
-                        } else {
-                            vOutput.position.x = vOutput.position.x * (1 + (_WidthOfRippleEffect * 0.4 - distanceFromHeight));
-                        }
+                        float effectiveHeight = _WidthOfRippleEffect - distanceFromHeight;
+                        vOutput.position.x = vOutput.position.x + _AmplitudeOfRippleEffect * sin(_PeriodOfRippleEffect * effectiveHeight);
+                        vOutput.position.z = vOutput.position.z + _AmplitudeOfRippleEffect * sin(_PeriodOfRippleEffect * effectiveHeight);
                     } 
                 }
                 
