@@ -12,8 +12,17 @@ public class MonsterRippleHandler : ObjectRippleHandler {
 
     public override void Visuals()
     {
-        base.Visuals();
         // change at wiiiiill
+        if (isVibrating) {
+            if (currVibrationTime > maxVibrationTime) {
+                isVibrating = false;
+                renderer.material.SetFloat("_VibrationProgress", -1.0f);
+            }
+            else {
+                currVibrationTime += Time.deltaTime;
+                renderer.material.SetFloat("_VibrationProgress", (currVibrationTime / maxVibrationTime) * 1.2f);
+            }
+        }
     }
 
 

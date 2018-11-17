@@ -47,6 +47,7 @@ public class ObjectRippleHandler : MonoBehaviour {
 
     public virtual void Visuals()
     {
+        // Has a ripple crossed the object?
         if (isVibrating) {
             if (currVibrationTime > maxVibrationTime) {
                 isVibrating = false;

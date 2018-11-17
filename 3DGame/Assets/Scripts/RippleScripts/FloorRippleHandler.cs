@@ -26,6 +26,7 @@ public class FloorRippleHandler : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         List<Ripple> ripples = rippleManager.getRipples();
+        // Draws every ripple on floor
         for (int i = 0; i < maxNumRipples; i++)
         {
             Ripple ripple = ripples[i];
