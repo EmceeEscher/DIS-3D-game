@@ -441,11 +441,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxVibrationTime: 1
-  minVibrationHeight: 0
+  minVibrationHeight: -0.2
   maxVibrationHeight: 1.2
-  rippleWidth: 0.2
-  ripplePeriod: 2
-  rippleAmplitude: 0.1
+  vibrationWidth: 0.2
+  vibrationPeriod: 3
+  vibrationAmplitude: 0.1
 --- !u!65 &1519952352
 BoxCollider:
   m_ObjectHideFlags: 0

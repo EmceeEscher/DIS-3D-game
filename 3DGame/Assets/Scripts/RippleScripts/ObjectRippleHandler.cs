@@ -38,9 +38,9 @@ public class ObjectRippleHandler : MonoBehaviour {
         Mesh mesh = GetComponent<MeshFilter>().mesh;
         renderer.material.SetFloat("_MaxMeshY", mesh.bounds.max.y); // TODO more customizable for different models
 
-        renderer.material.SetFloat("_WidthOfRippleEffect", vibrationWidth);
-        renderer.material.SetFloat("_PeriodOfRippleEffect", vibrationPeriod);
-        renderer.material.SetFloat("_AmplitudeOfRippleEffect", vibrationAmplitude);
+        renderer.material.SetFloat("_WidthOfVibration", vibrationWidth);
+        renderer.material.SetFloat("_PeriodOfVibration", vibrationPeriod);
+        renderer.material.SetFloat("_AmplitudeOfVibration", vibrationAmplitude);
 
         rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
     }
