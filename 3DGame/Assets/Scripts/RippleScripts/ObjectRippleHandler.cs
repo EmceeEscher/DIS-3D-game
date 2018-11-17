@@ -5,12 +5,23 @@ using UnityEngine;
 
 public class ObjectRippleHandler : MonoBehaviour {
 
+    [Tooltip("Amount of time object will vibrate after being touched by a ripple.")]
     public float maxVibrationTime = 5.0f;
+
+    [Tooltip("Relative point on object where center of vibration will start (0 is the base).")]
     public float minVibrationHeight = -0.2f;
+
+    [Tooltip("Relative point on object where center of vibration will end (1 is the top).")]
     public float maxVibrationHeight = 1.2f;
-    public float rippleWidth = 0.5f;
-    public float ripplePeriod = 25.0f;
-    public float rippleAmplitude = 3.0f;
+
+    [Tooltip("Vertical width of vibration on object.")]
+    public float vibrationWidth = 0.5f;
+
+    [Tooltip("Period coeffecient of sine curve of vibration (actual period is 2pi/this value).")]
+    public float vibrationPeriod = 25.0f;
+
+    [Tooltip("Amplitude of sine curve of vibration.")]
+    public float vibrationAmplitude = 3.0f;
 
     RippleManager rippleManager;
 
@@ -27,9 +38,9 @@ public class ObjectRippleHandler : MonoBehaviour {
         Mesh mesh = GetComponent<MeshFilter>().mesh;
         renderer.material.SetFloat("_MaxMeshY", mesh.bounds.max.y); // TODO more customizable for different models
 
-        renderer.material.SetFloat("_WidthOfRippleEffect", rippleWidth);
-        renderer.material.SetFloat("_PeriodOfRippleEffect", ripplePeriod);
-        renderer.material.SetFloat("_AmplitudeOfRippleEffect", rippleAmplitude);
+        renderer.material.SetFloat("_WidthOfRippleEffect", vibrationWidth);
+        renderer.material.SetFloat("_PeriodOfRippleEffect", vibrationPeriod);
+        renderer.material.SetFloat("_AmplitudeOfRippleEffect", vibrationAmplitude);
 
         rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
     }

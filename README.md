@@ -9,7 +9,8 @@ Allen Gueco
 
 Other assets:
 Basis for first-person controller and shader code courtesy of Benno Lueders  
-Free footstep sounds by Pavel Cristian  
+"Free footstep sounds" package by Pavel Cristian  
 
 Resources used under CC-BY license:  
-FeatherShell model by Don Whitaker  
+"FeatherShell" model by Don Whitaker  
+"metlic rode" model by Ghulam Rasool  
