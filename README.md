@@ -7,7 +7,7 @@ Julia Friend
 Aaron Paskin  
 Allen Gueco  
 
-Other assets:
+Other assets:  
 Basis for first-person controller and shader code courtesy of Benno Lueders  
 Sounds from "Free Footsteps System" package by Pavel Cristian  
 
