@@ -5,10 +5,27 @@ using UnityEngine;
 
 public class ObjectRippleHandler : MonoBehaviour {
 
+    [Tooltip("Amount of time object will vibrate after being touched by a ripple.")]
     public float maxVibrationTime = 5.0f;
 
-    protected Renderer renderer;
+    [Tooltip("Relative point on object where center of vibration will start (0 is the base).")]
+    public float minVibrationHeight = -0.2f;
+
+    [Tooltip("Relative point on object where center of vibration will end (1 is the top).")]
+    public float maxVibrationHeight = 1.2f;
+
+    [Tooltip("Vertical width of vibration on object.")]
+    public float vibrationWidth = 0.5f;
+
+    [Tooltip("Period coeffecient of sine curve of vibration (actual period is 2pi/this value).")]
+    public float vibrationPeriod = 25.0f;
+
+    [Tooltip("Amplitude of sine curve of vibration.")]
+    public float vibrationAmplitude = 3.0f;
+
     RippleManager rippleManager;
+
+    protected Renderer renderer;
     protected float currVibrationTime = 0.0f;
     protected bool isVibrating = false;
 
@@ -20,6 +37,10 @@ public class ObjectRippleHandler : MonoBehaviour {
 
         Mesh mesh = GetComponent<MeshFilter>().mesh;
         renderer.material.SetFloat("_MaxMeshY", mesh.bounds.max.y); // TODO more customizable for different models
+
+        renderer.material.SetFloat("_WidthOfVibration", vibrationWidth);
+        renderer.material.SetFloat("_PeriodOfVibration", vibrationPeriod);
+        renderer.material.SetFloat("_AmplitudeOfVibration", vibrationAmplitude);
 
         rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
     }
@@ -34,7 +55,11 @@ public class ObjectRippleHandler : MonoBehaviour {
             }
             else {
                 currVibrationTime += Time.deltaTime;
-                renderer.material.SetFloat("_VibrationProgress", (currVibrationTime / maxVibrationTime) * 1.2f);
+                renderer.material.SetFloat("_VibrationProgress",
+                                           Mathf.Lerp(
+                                               minVibrationHeight,
+                                               maxVibrationHeight,
+                                               (currVibrationTime / maxVibrationTime)));
             }
         }
     }

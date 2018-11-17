@@ -1,9 +1,11 @@
 ﻿Shader "Ripples/ObjectRippleShader"
 {
-    // defining the main properties as exposed in the inspector
+   // defining the main properties as exposed in the inspector
     Properties
     {
-        _WidthOfRippleEffect ("WidthOfRippleEffect", float) = 0.5
+        _WidthOfVibration ("vertical width of the vibration", float) = 0.5
+        _PeriodOfVibration ("period coeffecient of sine curve of vibration (period is 2pi/this value)", float) = 25.0
+        _AmplitudeOfVibration ("amplitude of sine curve of vibration", float) = 3.0
     }
     // start first subshader (there is only one, but there could be multible)
     SubShader
@@ -32,7 +34,9 @@
             
             float _VibrationProgress;
             float _MaxMeshY;
-            float _WidthOfRippleEffect;
+            float _WidthOfVibration;
+            float _PeriodOfVibration;
+            float _AmplitudeOfVibration;
 
             vertexOutput vertexShader (vertexInput vInput)
             {
@@ -44,14 +48,10 @@
                 if (_VibrationProgress > -1.0) {
                     float relativeHeight = (vOutput.position.y + _MaxMeshY) / (_MaxMeshY * 2);
                     float distanceFromHeight = abs(relativeHeight - _VibrationProgress);
-                    if (distanceFromHeight < _WidthOfRippleEffect) {
-                        if (distanceFromHeight < (_WidthOfRippleEffect * 0.4)) {
-                            vOutput.position.x = vOutput.position.x * (1 + (_WidthOfRippleEffect * 0.4 - distanceFromHeight));
-                        } else if (distanceFromHeight < (_WidthOfRippleEffect * 0.8)) {
-                            vOutput.position.x = vOutput.position.x * (1 - (_WidthOfRippleEffect * 0.4 - distanceFromHeight));
-                        } else {
-                            vOutput.position.x = vOutput.position.x * (1 + (_WidthOfRippleEffect * 0.4 - distanceFromHeight));
-                        }
+                    if (distanceFromHeight < _WidthOfVibration) {
+                        float effectiveHeight = _WidthOfVibration - distanceFromHeight;
+                        vOutput.position.x = vOutput.position.x + _AmplitudeOfVibration * sin(_PeriodOfVibration * effectiveHeight);
+                        vOutput.position.z = vOutput.position.z + _AmplitudeOfVibration * sin(_PeriodOfVibration * effectiveHeight);
                     } 
                 }
                 
@@ -72,10 +72,10 @@
                 
                 if (_VibrationProgress > -1.0) {
                     float relativeHeight = (vOutput.localPosition.y + _MaxMeshY) / (_MaxMeshY * 2);
-                    if (abs(relativeHeight - _VibrationProgress) < _WidthOfRippleEffect) {
-                        col.x += (_WidthOfRippleEffect - abs(relativeHeight - _VibrationProgress));
-                        col.y = 1 - (_WidthOfRippleEffect - abs(relativeHeight - _VibrationProgress));
-                        col.z += (_WidthOfRippleEffect - abs(relativeHeight - _VibrationProgress));
+                    if (abs(relativeHeight - _VibrationProgress) < _WidthOfVibration) {
+                        col.x += (_WidthOfVibration - abs(relativeHeight - _VibrationProgress));
+                        col.y = 1 - (_WidthOfVibration - abs(relativeHeight - _VibrationProgress));
+                        col.z += (_WidthOfVibration - abs(relativeHeight - _VibrationProgress));
                     } 
                 }
                 
