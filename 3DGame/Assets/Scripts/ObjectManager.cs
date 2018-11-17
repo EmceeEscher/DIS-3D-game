@@ -12,26 +12,40 @@ public class ObjectManager : MonoBehaviour {
     public float visionDistance = 5F;
     public LayerMask layerMask;
 
+    // Check whatever is in front. It returns true if it hits an object with the interactable layer. Interactable
+    // Objects are either "Switchable" or "Pickable"
     GameObject CheckInFront() {
         RaycastHit hit;
         // Raycast checking if there is an object (that has 'interactable' layer) from visiondistance, 
         // highlight this object.
         if (Physics.Raycast(transform.position, transform.forward, out hit, visionDistance, layerMask)) {
-            Debug.Log("Did hit");
-            Debug.DrawRay(transform.position, transform.forward * visionDistance, Color.yellow);
+            Debug.DrawRay(transform.position, transform.forward * visionDistance, Color.blue);
 
-            // Assumes that layer masks only selects objects that are throwable.
+
             return hit.collider.gameObject;
         }
         return null;
     }
-	void Start () {
 
+    public void Throw(GameObject item) {
+        Debug.Log("Thrown");
+    }
+
+    public void TurnSwitch(GameObject item) {
+        Debug.Log("Switched");
+    }
+
+    public void PickUp(GameObject item) {
+        Debug.Log("PickedUp");
+    }
+
+    void Start () {
+            
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        // Draws the ray if showVision is true. For debugging
+        // Draws the ray if showVision is true. For debugging. 
         if (showVision == true) {
             Debug.DrawRay(transform.position, transform.forward * visionDistance, Color.red);
         }
@@ -39,9 +53,20 @@ public class ObjectManager : MonoBehaviour {
         // Sets item to be whatever is interacting with the ray. If false, it's null.
         item = CheckInFront();
 
-        if (Input.GetKey("E") && item.GetComponent("Pickable") {
-            item.Throw();
+        // Press E to interact. 
+
+
+        if (item != null)
+        {
+            // If the item is picked up and it is a type of Pickable, then pressing E will throw that item
+            if (Input.GetKey(KeyCode.E))
+            {
+                if (item.GetComponent<Pickable>() != null) Throw(item);
+                else if (item.GetComponent<Switchable>() != null) TurnSwitch(item);
+            }
         }
+
+
 
     }
 }

@@ -9,6 +9,8 @@ public class Pickable : MonoBehaviour {
 
     private bool pickedUp = false;
 
+    public bool IsPickedUp() { return pickedUp; }
+
     // Communicates to the object that this object is now being hit by the Raycast
     // (see CheckInFront method in ObjectManager)
     public void OnPickup(Collider col, Rigidbody rbdy) {
@@ -19,15 +21,13 @@ public class Pickable : MonoBehaviour {
         rbdy.isKinematic = !rbdy.isKinematic;
     }
 
+    // The player would collide with the player 
     private void OnCollisionEnter(Collision collision)
     {
-        OnPickup(this.col, this.rbdy);
+
+        OnPickup(col, rbdy);
 
         // transform this so it is in front of the player
-    }
-
-    public void Throw() {
-        
     }
 
     
@@ -39,6 +39,7 @@ public class Pickable : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+        if (IsPickedUp() == true) { OnPickup(col, rbdy); }
 	}
 }

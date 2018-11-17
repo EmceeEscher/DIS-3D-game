@@ -10,11 +10,13 @@ using System.Collections;
 public class FPSInputController : MonoBehaviour
 {
     private CharacterMotor motor;
+    private CharacterFunctionality functionality;
 
     // Use this for initialization
     void Awake()
     {
         motor = GetComponent<CharacterMotor>();
+        functionality = GetComponent<CharacterFunctionality>();
     }
 
     // Update is called once per frame
@@ -24,6 +26,9 @@ public class FPSInputController : MonoBehaviour
         Vector3 directionVector = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
         if (directionVector != Vector3.zero) {
+            // Tell functionality script that we're moving
+            functionality.isMoving = true;
+
             // Get the length of the directon vector and then normalize it
             // Dividing by the length is cheaper than normalizing when we already have the length anyway
             float directionLength = directionVector.magnitude;
@@ -38,6 +43,8 @@ public class FPSInputController : MonoBehaviour
 
             // Multiply the normalized direction vector by the modified length
             directionVector = directionVector * directionLength;
+        } else {
+            functionality.isMoving = false;
         }
 
         // Apply the direction to the CharacterMotor
