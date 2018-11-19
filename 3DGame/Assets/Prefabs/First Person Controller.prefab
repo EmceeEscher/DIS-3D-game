@@ -329,33 +329,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1666221106264982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9064c98a75607824480db1ae5645ea20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  axes: 0
-  sensitivityX: 15
-  sensitivityY: 15
-  minimumX: -360
-  maximumX: 360
-  minimumY: -60
-  maximumY: 60
---- !u!114 &114932145785336864
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1666221106264982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c60eb88e7c5f31b4e9bc334eabf97cd3, type: 3}
+  m_Script: {fileID: 11500000, guid: b4c1bdf4996bfab45a24f07cbca19168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canControl: 1
   useFixedUpdate: 1
   movement:
-    maxForwardSpeed: 5
-    maxSidewaysSpeed: 5
-    maxBackwardsSpeed: 5
+    maxForwardSpeed: 10
+    maxSidewaysSpeed: 10
+    maxBackwardsSpeed: 10
     slopeSpeedMultiplier:
       serializedVersion: 2
       m_Curve:
@@ -399,7 +381,7 @@ MonoBehaviour:
     hitPoint: {x: 0, y: 0, z: 0}
     lastHitPoint: {x: Infinity, y: 0, z: 0}
   jumping:
-    enabled: 1
+    enabled: 0
     baseHeight: 1
     extraHeight: 4.1
     perpAmount: 0
@@ -447,6 +429,24 @@ MonoBehaviour:
   grounded: 1
   groundNormal: {x: 0, y: 0, z: 0}
   lastGroundNormal: {x: 0, y: 0, z: 0}
+--- !u!114 &114932145785336864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1666221106264982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd04007fd76fca1449d7836f7c0614bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axes: 0
+  sensitivityX: 15
+  sensitivityY: 15
+  minimumX: -360
+  maximumX: 360
+  minimumY: -60
+  maximumY: 60
 --- !u!114 &114977515012237900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -455,7 +455,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1666221106264982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8caa51f5761fa6b41b3ea9aa6bd5d5b7, type: 3}
+  m_Script: {fileID: 11500000, guid: b10c89e1c29b5844d9e652925a826bbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!124 &124160536206268684
