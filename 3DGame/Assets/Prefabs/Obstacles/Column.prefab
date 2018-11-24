@@ -99,9 +99,10 @@ MonoBehaviour:
   maxVibrationTime: 1.5
   minVibrationHeight: -0.2
   maxVibrationHeight: 1.4
-  rippleWidth: 0.5
-  ripplePeriod: 25
-  rippleAmplitude: 3
+  vibrationWidth: 0.5
+  vibrationPeriod: 25
+  vibrationAmplitude: 3
+  colorOffset: 0.5
 --- !u!136 &136074222087714050
 CapsuleCollider:
   m_ObjectHideFlags: 1
