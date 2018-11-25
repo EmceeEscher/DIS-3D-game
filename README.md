@@ -8,9 +8,10 @@ Aaron Paskin
 Allen Gueco  
 
 Other assets:  
-Basis for first-person controller and shader code courtesy of Benno Lueders  
+Character controller code modified from UnityUtilities of Benno Lueders  
 Sounds from "Free Footsteps System" package by Pavel Cristian  
+Monster shader utilizes TV Static Shader by Unity Forum User dandeentremont  
 
-Resources used under CC-BY license:  
+Assets used under CC-BY license:  
 "FeatherShell" model by Don Whitaker  
 "metlic rode" model by Ghulam Rasool  
