@@ -28,6 +28,7 @@ public class ObjectRippleHandler : MonoBehaviour {
     protected Renderer renderer;
     protected float currVibrationTime = 0.0f;
     protected bool isVibrating = false;
+    protected float modelRadius;
 
     // Use this for initialization
     void Start()
@@ -43,6 +44,7 @@ public class ObjectRippleHandler : MonoBehaviour {
         renderer.material.SetFloat("_AmplitudeOfVibration", vibrationAmplitude);
 
         rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
+        modelRadius = renderer.bounds.extents.magnitude;
     }
 
     public virtual void Visuals()
@@ -69,7 +71,7 @@ public class ObjectRippleHandler : MonoBehaviour {
         List<Ripple> ripples = rippleManager.getRipples();
         foreach (Ripple ripple in ripples) {
             if (ripple.isActive
-                && Mathf.Abs(calculateDistance(ripple) - ripple.currRadius) < ripple.thickness 
+                && Mathf.Abs(calculateDistance(ripple) - ripple.currRadius) < (ripple.thickness + modelRadius) 
                 && !isVibrating) {
                 isVibrating = true;
                 currVibrationTime = 0.0f;

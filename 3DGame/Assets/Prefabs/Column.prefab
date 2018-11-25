@@ -36,9 +36,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1494592412018288}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.466643, y: 1.53, z: 0.82}
-  m_LocalScale: {x: 0.0328084, y: 0.0328084, z: 0.0328084}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.7, y: 0, z: 0.82}
+  m_LocalScale: {x: 0.03, y: 0.06, z: 0.03}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,12 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dce869c1fde741ed95f46d7875de7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVibrationTime: 1.5
+  maxVibrationTime: 2
   minVibrationHeight: -0.2
   maxVibrationHeight: 1.4
-  rippleWidth: 0.5
-  ripplePeriod: 25
-  rippleAmplitude: 3
+  vibrationWidth: 0.5
+  vibrationPeriod: 25
+  vibrationAmplitude: 3
 --- !u!136 &136074222087714050
 CapsuleCollider:
   m_ObjectHideFlags: 1

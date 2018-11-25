@@ -69,6 +69,7 @@
             fixed4 fragmentShader (vertexOutput vOutput) : SV_Target
             {
                 fixed4 col = fixed4(0,0,0,1); //black (default)
+                //fixed4 col = fixed4(0,1,0,1); // DEBUG: uncomment to make objects visible
                 
                 if (_VibrationProgress > -1.0) {
                     float relativeHeight = (vOutput.localPosition.y + _MaxMeshY) / (_MaxMeshY * 2);
