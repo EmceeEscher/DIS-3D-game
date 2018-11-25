@@ -23,12 +23,14 @@ public class ObjectRippleHandler : MonoBehaviour {
     [Tooltip("Amplitude of sine curve of vibration.")]
     public float vibrationAmplitude = 3.0f;
 
+    [Tooltip("Distance from center where ripple will activate vibration.")]
+    public float modelRadius = 0.0f;
+
     RippleManager rippleManager;
 
     protected Renderer renderer;
     protected float currVibrationTime = 0.0f;
     protected bool isVibrating = false;
-    protected float modelRadius;
 
     // Use this for initialization
     void Start()
@@ -44,7 +46,6 @@ public class ObjectRippleHandler : MonoBehaviour {
         renderer.material.SetFloat("_AmplitudeOfVibration", vibrationAmplitude);
 
         rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
-        modelRadius = renderer.bounds.extents.magnitude;
     }
 
     public virtual void Visuals()

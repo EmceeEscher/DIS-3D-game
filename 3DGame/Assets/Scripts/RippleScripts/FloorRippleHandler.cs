@@ -12,7 +12,6 @@ public class FloorRippleHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
-        Debug.Log("rippleManager: " + rippleManager);
 
         maxNumRipples = rippleManager.maxNumRipples;
 
