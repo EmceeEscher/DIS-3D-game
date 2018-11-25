@@ -107,7 +107,7 @@ Shader "Ripples/MonsterRippleShader"
 			fixed4 fragmentShader(float4 screenPos : SV_POSITION, vertexOutput vOutput) : SV_Target
 			{
 				fixed4 col = fixed4(0,0,0,1);
-                //col = fixed4(0.5, 0.5, 0.5, 1); //DEBUG: uncomment to make monster visible
+                col = fixed4(0.5, 0.5, 0.5, 1); //DEBUG: uncomment to make monster visible
 
 				if (_VibrationProgress > -1.0) {
                 
