@@ -50,8 +50,17 @@
                     float distanceFromHeight = abs(relativeHeight - _VibrationProgress);
                     if (distanceFromHeight < _WidthOfVibration) {
                         float effectiveHeight = _WidthOfVibration - distanceFromHeight;
-                        vOutput.position.x = vOutput.position.x + _AmplitudeOfVibration * sin(_PeriodOfVibration * effectiveHeight);
-                        vOutput.position.z = vOutput.position.z + _AmplitudeOfVibration * sin(_PeriodOfVibration * effectiveHeight);
+                        if (vOutput.position.x < 0) {
+                            vOutput.position.x = vOutput.position.x - _AmplitudeOfVibration * sin(_PeriodOfVibration * effectiveHeight);
+                        } else {
+                            vOutput.position.x = vOutput.position.x + _AmplitudeOfVibration * sin(_PeriodOfVibration * effectiveHeight);
+                        }
+                        
+                        if (vOutput.position.z < 0) {
+                            vOutput.position.z = vOutput.position.z - _AmplitudeOfVibration * sin(_PeriodOfVibration * effectiveHeight);
+                        } else {
+                            vOutput.position.z = vOutput.position.z + _AmplitudeOfVibration * sin(_PeriodOfVibration * effectiveHeight);
+                        }
                     } 
                 }
                 
@@ -69,6 +78,7 @@
             fixed4 fragmentShader (vertexOutput vOutput) : SV_Target
             {
                 fixed4 col = fixed4(0,0,0,1); //black (default)
+                col = fixed4(0,1,0,1); // DEBUG: uncomment to make objects visible
                 
                 if (_VibrationProgress > -1.0) {
                     float relativeHeight = (vOutput.localPosition.y + _MaxMeshY) / (_MaxMeshY * 2);

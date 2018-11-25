@@ -52,4 +52,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxNumRipples: 5
-  rippleSpeed: 2
+  rippleSpeed: 4

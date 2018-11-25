@@ -23,6 +23,9 @@ public class ObjectRippleHandler : MonoBehaviour {
     [Tooltip("Amplitude of sine curve of vibration.")]
     public float vibrationAmplitude = 3.0f;
 
+    [Tooltip("Distance from center where ripple will activate vibration.")]
+    public float modelRadius = 0.0f;
+
     RippleManager rippleManager;
 
     protected Renderer renderer;
@@ -69,7 +72,7 @@ public class ObjectRippleHandler : MonoBehaviour {
         List<Ripple> ripples = rippleManager.getRipples();
         foreach (Ripple ripple in ripples) {
             if (ripple.isActive
-                && Mathf.Abs(calculateDistance(ripple) - ripple.currRadius) < ripple.thickness 
+                && Mathf.Abs(calculateDistance(ripple) - ripple.currRadius) < (ripple.thickness + modelRadius) 
                 && !isVibrating) {
                 isVibrating = true;
                 currVibrationTime = 0.0f;
