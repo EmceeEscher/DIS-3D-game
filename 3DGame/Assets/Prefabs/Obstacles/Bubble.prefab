@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1280351899245386}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 29.364014, y: 0.31516114, z: 27.73418}
+  m_LocalPosition: {x: -8.09, y: -0.3, z: 22.7}
   m_LocalScale: {x: 9.004604, y: 9.004604, z: 9.004604}
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,11 +97,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxVibrationTime: 5
-  minVibrationHeight: -0.2
-  maxVibrationHeight: 1.2
+  minVibrationHeight: -0.5
+  maxVibrationHeight: 1.5
   vibrationWidth: 0.5
   vibrationPeriod: 25
-  vibrationAmplitude: 3
+  vibrationAmplitude: 0.1
+  colorOffset: 0.2
 --- !u!135 &135096394401146452
 SphereCollider:
   m_ObjectHideFlags: 1
