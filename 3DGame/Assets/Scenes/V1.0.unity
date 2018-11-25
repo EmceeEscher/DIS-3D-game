@@ -870,7 +870,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1583448530}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 010722b744620464993dc86189ff8071, type: 3}
 --- !u!4 &1583448537
 Transform:
   m_ObjectHideFlags: 0
@@ -879,8 +879,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1583448530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.33, y: 1, z: -4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.33, y: 0.97, z: -6.4}
+  m_LocalScale: {x: 5, y: 3, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -896,12 +896,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96b29ef249846440a1f8a1fb664d5b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVibrationTime: 5
+  maxVibrationTime: 2
   minVibrationHeight: -0.2
   maxVibrationHeight: 1.2
-  vibrationWidth: 0.5
+  vibrationWidth: 0.2
   vibrationPeriod: 25
-  vibrationAmplitude: 3
+  vibrationAmplitude: 0.1
   modelRadius: 0
 --- !u!1 &1702792039
 GameObject:
@@ -1230,7 +1230,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2095538183}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.78, y: 86.3, z: -0.3}
+  m_LocalPosition: {x: 2.78, y: 20.3, z: -0.3}
   m_LocalScale: {x: 82.82736, y: 1, z: 94.10622}
   m_Children: []
   m_Father: {fileID: 0}
