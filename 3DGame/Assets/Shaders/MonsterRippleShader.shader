@@ -96,6 +96,9 @@ Shader "Ripples/MonsterRippleShader"
 			{
 				fixed4 col = fixed4(0.5,0.5,0.5,1);
 
+				// TODO use position information to change shader
+				fixed4 local = vOutput.localPosition;
+
 				if (_VibrationProgress > -1.0) {
 
 					// static 
