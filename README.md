@@ -7,5 +7,12 @@ Julia Friend
 Aaron Paskin  
 Allen Gueco  
 
-Basis for first-person controller and shader code courtesy of Benno Lueders  
-Footstep sounds courtesy of Pavel Cristian  
+Other assets:  
+Character controller code modified from UnityUtilities of Benno Lueders  
+Sounds from "Free Footsteps System" package by Pavel Cristian  
+Monster shader utilizes TV Static Shader by Unity Forum User dandeentremont  
+
+Assets used under CC-BY license:  
+"FeatherShell" model by Don Whitaker  
+"metlic rode" model by Ghulam Rasool  
+"Spike" model by Dana Payne  
