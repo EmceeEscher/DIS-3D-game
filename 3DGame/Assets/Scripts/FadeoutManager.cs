@@ -7,10 +7,13 @@ public class FadeoutManager : MonoBehaviour {
 
     public Image fadeoutImage;
     public float fadeoutTime = 2.0f;
+    public AudioClip fadeoutMusic;
+
+    AudioSource audioSource;
 
     // Use this for initialization
     void Start () {
-
+        audioSource = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -20,8 +23,9 @@ public class FadeoutManager : MonoBehaviour {
 
     public IEnumerator Fadeout()
     {
-        Color currentColor = fadeoutImage.color;
+        audioSource.PlayOneShot(fadeoutMusic);
 
+        Color currentColor = fadeoutImage.color;
         Color visibleColor = fadeoutImage.color;
         visibleColor.a = 1f;
 
