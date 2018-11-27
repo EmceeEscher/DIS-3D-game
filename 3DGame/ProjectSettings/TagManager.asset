@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RippleManager
   - GoalManager
+  - FadeoutManager
   layers:
   - Default
   - TransparentFX
