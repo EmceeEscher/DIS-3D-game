@@ -37,6 +37,13 @@
             float _WidthOfVibration;
             float _PeriodOfVibration;
             float _AmplitudeOfVibration;
+			
+			// Color
+			/*float _R; 
+			float _G; 
+			float _B;*/
+
+			float _Color;
 
             vertexOutput vertexShader (vertexInput vInput)
             {
@@ -84,9 +91,16 @@
                     float relativeHeight = (vOutput.localPosition.y + _MaxMeshY) / (_MaxMeshY * 2);
                     if (abs(relativeHeight - _VibrationProgress) < _WidthOfVibration) {
                         col.x += (_WidthOfVibration - abs(relativeHeight - _VibrationProgress));
+						//col.x += (_WidthOfVibration - abs(relativeHeight - _VibrationProgress)); //will this change color?
                         col.y = 1 - (_WidthOfVibration - abs(relativeHeight - _VibrationProgress));
-                        col.z += (_WidthOfVibration - abs(relativeHeight - _VibrationProgress));
+						//col.y = 1 - (_WidthOfVibration - abs(relativeHeight - _VibrationProgress));
+						col.z += (_WidthOfVibration - abs(relativeHeight - _VibrationProgress));
+
+						//col *= _Color;
                     } 
+					col.g *= _Color;
+					col.r *= _Color + .25;
+					col.b *= _Color + .16;
                 }
                 
                 return col;

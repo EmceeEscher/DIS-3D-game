@@ -109,6 +109,9 @@ Shader "Ripples/MonsterRippleShader"
 				fixed4 col = fixed4(0,0,0,1);
                 col = fixed4(0.5, 0.5, 0.5, 1); //DEBUG: uncomment to make monster visible
 
+				// TODO use position information to change shader
+				fixed4 local = vOutput.localPosition;
+
 				if (_VibrationProgress > -1.0) {
                 
                     float relativeHeight = (vOutput.localPosition.y + _MaxMeshY) / (_MaxMeshY * 2);
