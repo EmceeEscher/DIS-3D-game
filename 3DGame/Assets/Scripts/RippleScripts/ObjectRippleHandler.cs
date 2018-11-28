@@ -29,7 +29,7 @@ public class ObjectRippleHandler : MonoBehaviour {
     [Tooltip("Base color given to shader.")]
     public Color baseColor;
 
-    [Tooltip("Offset for middle of ripple. (For best results use value between 0 and 1.)")]
+    [Tooltip("How different the colors is at the center of the ripple vs. the edges. (Must be between 0 and 1.)")]
     public float colorOffset = 0.5f;
 
     RippleManager rippleManager;

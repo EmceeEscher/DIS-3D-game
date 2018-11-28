@@ -88,26 +88,12 @@
                 
                 if (_VibrationProgress > -1.0) {
                     float relativeHeight = (vOutput.localPosition.y + _MaxMeshY) / (_MaxMeshY * 2);
-                    float offsetFromRippleCenter = (_WidthOfVibration - abs(relativeHeight - _VibrationProgress)) / _WidthOfVibration - 0.2; 
+                    float offsetFromRippleCenter = (_WidthOfVibration - abs(relativeHeight - _VibrationProgress)) / _WidthOfVibration - _ColorOffset; 
                     if (abs(relativeHeight - _VibrationProgress) < _WidthOfVibration) {
-                        col.r = (_BaseColor.r + offsetFromRippleCenter * _ColorOffset);// % 1.0;
-                        col.g = (_BaseColor.g + offsetFromRippleCenter * _ColorOffset);// % 1.0;
-						col.b = (_BaseColor.b + offsetFromRippleCenter * _ColorOffset);// % 1.0;
-                        
-                        if (col.r > 1) {
-                            col.r = col.r - frac(col.r);
-                        }
-                        if (col.g > 1) {
-                            col.g = col.g - frac(col.g);
-                        }
-                        if (col.b > 1) {
-                            col.b = col.b - frac(col.b);
-                        }
-                        
+                        col.r = (_BaseColor.r + offsetFromRippleCenter);
+                        col.g = (_BaseColor.g + offsetFromRippleCenter);
+						col.b = (_BaseColor.b + offsetFromRippleCenter);
                     } 
-					//col.g *= _ColorOffset;
-					//col.r *= _ColorOffset + .25;
-					//col.b *= _ColorOffset + .16;
                 }
                 
                 return col;
