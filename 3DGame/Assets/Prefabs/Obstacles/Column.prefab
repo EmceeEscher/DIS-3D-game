@@ -94,16 +94,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9dce869c1fde741ed95f46d7875de7d7, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  maxVibrationTime: 2
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVibrationTime: 3
   minVibrationHeight: -0.2
   maxVibrationHeight: 1.4
   vibrationWidth: 0.5
   vibrationPeriod: 15
   vibrationAmplitude: 2
   modelRadius: 2
-  colorOffset: 2.5
+  baseColor: {r: 0, g: 0.64705884, b: 0.14509805, a: 0}
+  colorOffset: 0.4
 --- !u!136 &136074222087714050
 CapsuleCollider:
   m_ObjectHideFlags: 1
