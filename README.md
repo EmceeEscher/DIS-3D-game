@@ -9,14 +9,14 @@ Allen Gueco
 
 The following assets were used under the CC-BY license, with modification:  
 
-Found on Google Poly:  
+Models from Google Poly:  
 "FeatherShell" by Don Whitaker  
 "metlic rode" by Ghulam Rasool  
 "Spike" by Dana Payne  
 "Portal" by Poly by Google  
 "Skeleton Key" by Jerad Bitner  
 
-Found on freesound.org:
+Sounds from Freesound:  
 "Space choir" by trilly82  
 "Magical portal open" by alanmcki  
 "Ding" by Aiwha  
