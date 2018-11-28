@@ -22,7 +22,7 @@ public class GoalManager : MonoBehaviour {
 	void Update () {
         if (numObtainedWaypoints >= numRequiredWaypoints && !exitPortalSpawned) {
             exitPortalSpawned = true;
-            Instantiate(exitPortal, Vector3.zero, transform.rotation);
+            Instantiate(exitPortal, new Vector3(0, 1, 0), transform.rotation);
             audioSource.PlayOneShot(portalOpenSound);
         }
 	}
