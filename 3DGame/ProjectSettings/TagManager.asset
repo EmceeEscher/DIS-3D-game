@@ -7,7 +7,6 @@ TagManager:
   - RippleManager
   - GoalManager
   - FadeoutManager
-  - PlayerCollider
   layers:
   - Default
   - TransparentFX
