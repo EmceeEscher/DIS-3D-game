@@ -22,8 +22,10 @@ GameObject:
   - component: {fileID: 33241306026803668}
   - component: {fileID: 23474879775112790}
   - component: {fileID: 114483883480912292}
+  - component: {fileID: 65470398390248216}
+  - component: {fileID: 114424089573632304}
   m_Layer: 0
-  m_Name: CoolObject
+  m_Name: GoalObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1596763520762834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.458, y: 1.7539834, z: -0.67}
+  m_LocalPosition: {x: 6.458, y: 0.7, z: -13.4}
   m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,6 +86,29 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1596763520762834}
   m_Mesh: {fileID: 4300004, guid: 85c1b4c17beef4d998dc894d4489a35c, type: 3}
+--- !u!65 &65470398390248216
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1596763520762834}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 653.4621, y: 600.08044, z: 416.18976}
+  m_Center: {x: -449.7623, y: 453.39532, z: 232.90955}
+--- !u!114 &114424089573632304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1596763520762834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1dbb4a318e54114951faca40807ef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114483883480912292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -96,3 +121,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxVibrationTime: 2
+  minVibrationHeight: -0.2
+  maxVibrationHeight: 1.2
+  vibrationWidth: 0.5
+  vibrationPeriod: 25
+  vibrationAmplitude: 3
+  modelRadius: 0
