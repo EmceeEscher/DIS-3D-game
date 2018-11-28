@@ -116,6 +116,8 @@ MonoBehaviour:
   vibrationPeriod: 10
   vibrationAmplitude: 1
   modelRadius: 1
+  baseColor: {r: 0, g: 0.60784316, b: 0.654902, a: 0}
+  colorOffset: 0.5
 --- !u!114 &114869580176560812
 MonoBehaviour:
   m_ObjectHideFlags: 1

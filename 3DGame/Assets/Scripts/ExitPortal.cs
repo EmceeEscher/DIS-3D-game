@@ -20,7 +20,7 @@ public class ExitPortal : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) {
+        if (other.CompareTag("PlayerCollider")) {
             StartCoroutine(fadeoutManager.Fadeout());
         }    
     }

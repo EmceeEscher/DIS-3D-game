@@ -4,11 +4,6 @@ using UnityEngine;
 
 
 public class MonsterRippleHandler : ObjectRippleHandler { 
-	
-    public MonsterRippleHandler()
-    {
-        Debug.Log("MonsterRippleHandler constructed.");
-    }
 
     public override void Visuals()
     {
