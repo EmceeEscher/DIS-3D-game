@@ -10,10 +10,11 @@ Allen Gueco
 The following assets were used under the CC-BY license, with modification:  
 
 Found on Google Poly:  
-"FeatherShell" model by Don Whitaker  
-"metlic rode" model by Ghulam Rasool  
-"Spike" model by Dana Payne  
-"Portal" model by Poly by Google  
+"FeatherShell" by Don Whitaker  
+"metlic rode" by Ghulam Rasool  
+"Spike" by Dana Payne  
+"Portal" by Poly by Google  
+"Skeleton Key" by Jerad Bitner  
 
 Found on freesound.org:
 "Space choir" by trilly82  
