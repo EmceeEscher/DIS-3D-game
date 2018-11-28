@@ -73,18 +73,26 @@ Shader "Ripples/MonsterRippleShader"
 
 				vOutput.localPosition = vInput.position;
 				vOutput.position = vInput.position;
-
+                
+                float4 worldPosition = mul(unity_ObjectToWorld, vOutput.position);
+                
 				if (_VibrationProgress > -1.0) {
                         if (vOutput.position.x < 0) {
-                            vOutput.position.x = vOutput.position.x - _AmplitudeOfVibration * sin(_Time[1]);
+                            vOutput.position.x = vOutput.position.x - _AmplitudeOfVibration * sin(worldPosition.x * _Time[1]);
                         } else {
-                            vOutput.position.x = vOutput.position.x + _AmplitudeOfVibration * sin(_Time[1]);
+                            vOutput.position.x = vOutput.position.x + _AmplitudeOfVibration * sin(worldPosition.x * _Time[1]);
+                        }
+                        
+                        if (vOutput.position.y < 0) {
+                            vOutput.position.y = vOutput.position.y - _AmplitudeOfVibration * sin(worldPosition.x * _Time[1]);
+                        } else {
+                            vOutput.position.y = vOutput.position.y + _AmplitudeOfVibration * cos(worldPosition.z * _Time[1]);
                         }
                         
                         if (vOutput.position.z < 0) {
-                            vOutput.position.z = vOutput.position.z - _AmplitudeOfVibration * cos(_Time[1]);
+                            vOutput.position.z = vOutput.position.z - _AmplitudeOfVibration * cos(worldPosition.z * _Time[1]);
                         } else {
-                            vOutput.position.z = vOutput.position.z + _AmplitudeOfVibration * cos(_Time[1]);
+                            vOutput.position.z = vOutput.position.z + _AmplitudeOfVibration * cos(worldPosition.z * _Time[1]);
                         }
 				}
 
@@ -107,7 +115,7 @@ Shader "Ripples/MonsterRippleShader"
 			fixed4 fragmentShader(float4 screenPos : SV_POSITION, vertexOutput vOutput) : SV_Target
 			{
 				fixed4 col = fixed4(0,0,0,1);
-                col = fixed4(0.5, 0.5, 0.5, 1); //DEBUG: uncomment to make monster visible
+                //col = fixed4(0.5, 0.5, 0.5, 1); //DEBUG: uncomment to make monster visible
 
 				// TODO use position information to change shader
 				fixed4 local = vOutput.localPosition;
