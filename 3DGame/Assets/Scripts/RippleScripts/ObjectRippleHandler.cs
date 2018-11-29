@@ -38,6 +38,7 @@ public class ObjectRippleHandler : MonoBehaviour {
     protected float currVibrationTime = 0.0f;
     protected bool isVibrating = false;
 
+
     // Use this for initialization
     void Start()
     {
