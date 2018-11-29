@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour {
 
+    // Only one object to be held
+    public GameObject hand = null;
     public GameObject item;
+
     public bool showVision = false;
     public float visionDistance = 5F;
     public LayerMask layerMask;
-    private int numItems = 0;
-    public static int MAX_ITEMS = 3;
-    public GameObject[] inventory = new GameObject[MAX_ITEMS];
+    public float zOffset = 1F, xOffset = 0.5F ;
+    public float throwForce = 10F;
             
 
     // Check whatever is in front. It returns true if it hits an object with the interactable layer. 
@@ -29,6 +31,9 @@ public class ObjectManager : MonoBehaviour {
     }
 
     public void Throw(GameObject item) {
+        item.GetComponent<Rigidbody>().isKinematic = false;
+        item.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce + transform.up * throwForce);
+        Debug.Log("Throw called");
 
     }
 
@@ -36,6 +41,9 @@ public class ObjectManager : MonoBehaviour {
         Debug.Log("Switched");
     }
 
+    public bool HasItem() {
+        return hand != null;
+    }
     void Start () {
             
 	}
@@ -43,31 +51,32 @@ public class ObjectManager : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         // if the collided game object is pickable and there are more items to pick up
-        item = collision.collider.gameObject;
-        if (item.GetComponent<Pickable>() != null && numItems < MAX_ITEMS) {
-            // add it to inventory.
-            inventory[numItems] = item;
-            numItems++;
+        if (collision.collider.gameObject.GetComponent<Pickable>() != null) {
+            item = collision.collider.gameObject;
+            hand = item;
         }
+    }
+
+    private void holdItem(GameObject item) {
+        // put item to the position of the player plus a bit to the left.
+        item.transform.position = transform.position + (zOffset * transform.forward) + (xOffset * transform.right);
+        // locks rotation I think
+        item.transform.rotation = new Quaternion(0.0f, transform.rotation.y, 0.0f, transform.rotation.w);
     }
 
     // Update is called once per frame
     void Update () {
         // Draws the ray if showVision is true. For debugging. 
-        if (showVision == true) {
-            Debug.DrawRay(transform.position, transform.forward * visionDistance, Color.red);
+        if (HasItem()) {
+            holdItem(item);
         }
-
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E) && HasItem())
         {
-            item = CheckInFront();
-            if (item != null)
-            {
-                if (item.GetComponent<Pickable>() != null) Throw(item);
-                else if (item.GetComponent<Switchable>() != null) TurnSwitch(item);
-            }
-        }
+            hand = null;
+            Debug.Log("Thrown");
+            Throw(item);
 
+        }
 
 
     }
