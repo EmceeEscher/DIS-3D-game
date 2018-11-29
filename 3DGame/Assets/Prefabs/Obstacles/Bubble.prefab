@@ -9,46 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1261227035345592}
+  m_RootGameObject: {fileID: 1280351899245386}
   m_IsPrefabAsset: 1
---- !u!1 &1261227035345592
+--- !u!1 &1280351899245386
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4331827123106134}
-  - component: {fileID: 33341710966519470}
-  - component: {fileID: 23524601073511466}
-  - component: {fileID: 135803406668170288}
-  - component: {fileID: 114001156741642232}
+  - component: {fileID: 4766773836811538}
+  - component: {fileID: 33426483853741316}
+  - component: {fileID: 23718144406987588}
+  - component: {fileID: 135096394401146452}
+  - component: {fileID: 114068545626881510}
   m_Layer: 0
-  m_Name: RippleSphere
+  m_Name: Bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4331827123106134
+--- !u!4 &4766773836811538
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1261227035345592}
+  m_GameObject: {fileID: 1280351899245386}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.815019, y: 0.5, z: 25.212893}
-  m_LocalScale: {x: 13.53212, y: 13.53212, z: 13.53212}
+  m_LocalPosition: {x: -8.09, y: -0.3, z: 22.7}
+  m_LocalScale: {x: 9.004604, y: 9.004604, z: 9.004604}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23524601073511466
+--- !u!23 &23718144406987588
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1261227035345592}
+  m_GameObject: {fileID: 1280351899245386}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -78,39 +78,37 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33341710966519470
+--- !u!33 &33426483853741316
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1261227035345592}
+  m_GameObject: {fileID: 1280351899245386}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114001156741642232
+--- !u!114 &114068545626881510
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1261227035345592}
+  m_GameObject: {fileID: 1280351899245386}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9dce869c1fde741ed95f46d7875de7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVibrationTime: 3
-  minVibrationHeight: -0.2
-  maxVibrationHeight: 1.2
-  vibrationWidth: 0.2
-  vibrationPeriod: 10
-  vibrationAmplitude: 0.05
-  modelRadius: 11
-  baseColor: {r: 0.6666667, g: 0, b: 0.6509804, a: 0}
-  colorOffset: 0.5
---- !u!135 &135803406668170288
+  maxVibrationTime: 5
+  minVibrationHeight: -0.5
+  maxVibrationHeight: 1.5
+  vibrationWidth: 0.5
+  vibrationPeriod: 25
+  vibrationAmplitude: 0.1
+  colorOffset: 0.2
+--- !u!135 &135096394401146452
 SphereCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1261227035345592}
+  m_GameObject: {fileID: 1280351899245386}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
