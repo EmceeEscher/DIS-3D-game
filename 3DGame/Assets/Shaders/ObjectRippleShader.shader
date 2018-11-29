@@ -90,13 +90,6 @@
                     float relativeHeight = (vOutput.localPosition.y + _MaxMeshY) / (_MaxMeshY * 2);
                     float offsetFromRippleCenter = (_WidthOfVibration - abs(relativeHeight - _VibrationProgress)) / _WidthOfVibration - _ColorOffset; 
                     if (abs(relativeHeight - _VibrationProgress) < _WidthOfVibration) {
-                        /*col.x += (_WidthOfVibration - abs(relativeHeight - _VibrationProgress));
-						//col.x += (_WidthOfVibration - abs(relativeHeight - _VibrationProgress)); //will this change color?
-                        col.y = 1 - (_WidthOfVibration - abs(relativeHeight - _VibrationProgress));
-						//col.y = 1 - (_WidthOfVibration - abs(relativeHeight - _VibrationProgress));
-						col.z += (_WidthOfVibration - abs(relativeHeight - _VibrationProgress));
-
-						//col *= _Color;*/
                         col.r = (_BaseColor.r + offsetFromRippleCenter);
                         col.g = (_BaseColor.g + offsetFromRippleCenter);
 						col.b = (_BaseColor.b + offsetFromRippleCenter);
