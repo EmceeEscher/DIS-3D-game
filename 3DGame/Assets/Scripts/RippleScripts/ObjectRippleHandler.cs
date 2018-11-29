@@ -26,7 +26,7 @@ public class ObjectRippleHandler : MonoBehaviour {
     [Tooltip("Distance from center where ripple will activate vibration.")]
     public float modelRadius = 0.0f;
 
-    RippleManager rippleManager;
+    protected RippleManager rippleManager;
 
     protected Renderer renderer;
     protected float currVibrationTime = 0.0f;
@@ -88,7 +88,7 @@ public class ObjectRippleHandler : MonoBehaviour {
         UpdateFunction();
     }
 
-    float calculateDistance(Ripple ripple) {
+    protected float calculateDistance(Ripple ripple) {
         return Mathf.Sqrt(
             Mathf.Pow((ripple.centerX - transform.position.x), 2) + 
             Mathf.Pow((ripple.centerZ - transform.position.z), 2));

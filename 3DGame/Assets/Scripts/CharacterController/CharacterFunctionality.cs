@@ -37,8 +37,8 @@ public class CharacterFunctionality : MonoBehaviour {
             lastStepTime = 0.0f;
             rippleStartPos.x = transform.position.x + transform.forward.x * rippleOffset;
             rippleStartPos.y = transform.position.z + transform.forward.z * rippleOffset;
-            rippleManager.CreateRipple(rippleStartPos.x, rippleStartPos.y, rippleRange, rippleThickness);
-            audioSource.PlayOneShot(footstepClips[Random.Range(0, footstepClips.Length)]);
+            rippleManager.CreateRipple(rippleStartPos.x, rippleStartPos.y, rippleRange, rippleThickness, this.tag);
+            if(audioSource != null) audioSource.PlayOneShot(footstepClips[Random.Range(0, footstepClips.Length)]);
         }
         lastStepTime += Time.deltaTime;
 	}

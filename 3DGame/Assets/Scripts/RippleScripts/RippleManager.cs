@@ -9,6 +9,7 @@ public class Ripple {
     public float maxRadius;
     public float thickness;
     public bool isActive;
+    public string sourceTag;
 
     public Ripple() {
         centerX = 0f;
@@ -17,6 +18,7 @@ public class Ripple {
         maxRadius = 0f;
         thickness = 0f;
         isActive = false;
+        sourceTag = "None";
     }
 }
 
@@ -51,7 +53,7 @@ public class RippleManager : MonoBehaviour {
         }
 	}
 
-    public void CreateRipple (float centerX, float centerZ, float maxRadius, float thickness) {
+    public void CreateRipple (float centerX, float centerZ, float maxRadius, float thickness, string sourceTag) {
         Ripple newRipple = ripples[oldestRippleIndex];
         newRipple.centerX = centerX;
         newRipple.centerZ = centerZ;
@@ -59,6 +61,7 @@ public class RippleManager : MonoBehaviour {
         newRipple.maxRadius = maxRadius;
         newRipple.thickness = thickness;
         newRipple.isActive = true;
+        newRipple.sourceTag = sourceTag;
 
         oldestRippleIndex++;
         if (oldestRippleIndex >= maxNumRipples) {
@@ -72,7 +75,7 @@ public class RippleManager : MonoBehaviour {
 
     void DebugRipple() {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            CreateRipple(transform.position.x, transform.position.y, 100f, 0.5f);
+            CreateRipple(transform.position.x, transform.position.y, 100f, 0.5f, this.tag);
         }
         //Debug.Log("ripple[0] currRadius: " + ripples[0].currRadius);
     }

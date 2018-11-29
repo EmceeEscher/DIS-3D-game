@@ -43,7 +43,10 @@ public class FloorRippleHandler : MonoBehaviour {
                 rippleData[i].y = 0f;
                 rippleData[i].w = 0f;
             }
+            Debug.Log(ripple.sourceTag);
+
         }
         renderer.material.SetVectorArray("_Ripples", rippleData);
+
 	}
 }

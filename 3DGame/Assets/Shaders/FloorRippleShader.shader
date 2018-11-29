@@ -32,6 +32,7 @@
             
             int _NumRipples = 3; // must be less than the size of the _Ripples array below
             float4 _Ripples[50];
+            int _RippleSourceID;
 
             vertexOutput vertexShader (vertexInput vInput)
             {
@@ -61,7 +62,7 @@
                     
                     // if point is within thickness of current ring, color it   
                     if (abs(diff) < _Ripples[i].w) {
-                        col = fixed4(1,0,0,1); //red
+                        col = fixed4(0,1,0,0); // Green
                         break;
                     }
                 }
