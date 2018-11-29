@@ -26,5 +26,7 @@ CC-BY license can be found here: https://creativecommons.org/licenses/by/3.0/leg
 Other assets:  
 Character controller code modified from UnityUtilities by Benno Lueders  
 Footstep sounds from "Free Footsteps System" package by Pavel Cristian  
+Background images from "Dynamic Space Background Lite" package by Dinv Studio  
 Monster shader utilizes TV Static Shader by Unity Forum User dandeentremont  
-Ending image from "Dynamic Space Background Lite" package by Dinv Studio  
+"Guasmally" font by Malre  
+"Maya" font by George Douros  

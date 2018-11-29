@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TextPanel : MonoBehaviour {
 
-    public GameObject mainMenu;
+    public GameObject nextPage;
+    public GameObject prevPage;
 
 	// Use this for initialization
 	void Start () {
@@ -16,9 +17,15 @@ public class TextPanel : MonoBehaviour {
 		
 	}
 
-    public void LoadMainMenu()
+    public void LoadPrevPage()
     {
         gameObject.SetActive(false);
-        mainMenu.SetActive(true);
+        prevPage.SetActive(true);
+    }
+
+    public void LoadNextPage()
+    {
+        gameObject.SetActive(false);
+        nextPage.SetActive(true);
     }
 }
