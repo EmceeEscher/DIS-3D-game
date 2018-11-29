@@ -23,7 +23,13 @@ public class ObjectRippleHandler : MonoBehaviour {
     [Tooltip("Amplitude of sine curve of vibration.")]
     public float vibrationAmplitude = 3.0f;
 
-    [Tooltip("Controls for hue.")]
+    [Tooltip("Distance from center where ripple will activate vibration.")]
+    public float modelRadius = 0.0f;
+
+    [Tooltip("Base color given to shader.")]
+    public Color baseColor;
+
+    [Tooltip("How different the colors is at the center of the ripple vs. the edges. (Must be between 0 and 1.)")]
     public float colorOffset = 0.5f;
 
     RippleManager rippleManager;
@@ -32,13 +38,6 @@ public class ObjectRippleHandler : MonoBehaviour {
     protected float currVibrationTime = 0.0f;
     protected bool isVibrating = false;
 
-    private float Sigmoid(float x)
-    {
-        // Used to map colorOffset between 0 and 1
-        // @ https://www.robosoup.com/2008/09/sigmoid-function-in-c.html
-        float y = (float)(1 / (1 + Math.Exp(-x)));
-        return y * (1 - y);
-    }
 
     // Use this for initialization
     void Start()
@@ -53,14 +52,8 @@ public class ObjectRippleHandler : MonoBehaviour {
         renderer.material.SetFloat("_PeriodOfVibration", vibrationPeriod);
         renderer.material.SetFloat("_AmplitudeOfVibration", vibrationAmplitude);
 
-        /*renderer.material.SetFloat("_R", Sigmoid(3 * colorOffset)); // maybe not use simgoid here?
-        renderer.material.SetFloat("_G", Sigmoid(5 * colorOffset));
-        renderer.material.SetFloat("_B", Sigmoid(colorOffset));
-
-        if (Sigmoid(colorOffset) > 1 || Sigmoid(colorOffset) < 0) {
-            Debug.Log("Sigmoid does not work");
-        }*/
-        renderer.material.SetFloat("_Color", colorOffset);
+        renderer.material.SetColor("_BaseColor", baseColor);
+        renderer.material.SetFloat("_ColorOffset", colorOffset);
 
         rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
     }
@@ -89,7 +82,7 @@ public class ObjectRippleHandler : MonoBehaviour {
         List<Ripple> ripples = rippleManager.getRipples();
         foreach (Ripple ripple in ripples) {
             if (ripple.isActive
-                && Mathf.Abs(calculateDistance(ripple) - ripple.currRadius) < ripple.thickness 
+                && Mathf.Abs(calculateDistance(ripple) - ripple.currRadius) < (ripple.thickness + modelRadius) 
                 && !isVibrating) {
                 isVibrating = true;
                 currVibrationTime = 0.0f;

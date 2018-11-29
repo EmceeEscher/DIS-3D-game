@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class FloorRippleHandler : MonoBehaviour {
 
-    public RippleManager rippleManager;
-
+    RippleManager rippleManager;
     int maxNumRipples;
     Renderer renderer;
     Vector4[] rippleData;
 
 	// Use this for initialization
 	void Start () {
+        rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
+
         maxNumRipples = rippleManager.maxNumRipples;
 
         renderer = GetComponent<Renderer>();
@@ -21,7 +22,7 @@ public class FloorRippleHandler : MonoBehaviour {
             rippleData[i] = new Vector4(0f, 0f, 0f, 0f);
         }
         renderer.material.SetInt("_NumRipples", maxNumRipples);
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {

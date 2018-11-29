@@ -6,6 +6,9 @@
         _WidthOfVibration ("vertical width of the vibration", float) = 0.5
         _PeriodOfVibration ("period coeffecient of sine curve of vibration (period is 2pi/this value)", float) = 25.0
         _AmplitudeOfVibration ("amplitude of sine curve of vibration", float) = 3.0
+        _BaseColor ("base color of ripple effect", Color) = (0,1,0,1)
+        _ColorOffset ("offset of color of middle of ripple effect", float) = 0.5
+        
     }
     // start first subshader (there is only one, but there could be multible)
     SubShader
@@ -38,12 +41,8 @@
             float _PeriodOfVibration;
             float _AmplitudeOfVibration;
 			
-			// Color
-			/*float _R; 
-			float _G; 
-			float _B;*/
-
-			float _Color;
+            float4 _BaseColor;         
+			float _ColorOffset;
 
             vertexOutput vertexShader (vertexInput vInput)
             {
@@ -57,8 +56,17 @@
                     float distanceFromHeight = abs(relativeHeight - _VibrationProgress);
                     if (distanceFromHeight < _WidthOfVibration) {
                         float effectiveHeight = _WidthOfVibration - distanceFromHeight;
-                        vOutput.position.x = vOutput.position.x + _AmplitudeOfVibration * sin(_PeriodOfVibration * effectiveHeight);
-                        vOutput.position.z = vOutput.position.z + _AmplitudeOfVibration * sin(_PeriodOfVibration * effectiveHeight);
+                        if (vOutput.position.x < 0) {
+                            vOutput.position.x = vOutput.position.x - _AmplitudeOfVibration * sin(_PeriodOfVibration * effectiveHeight);
+                        } else {
+                            vOutput.position.x = vOutput.position.x + _AmplitudeOfVibration * sin(_PeriodOfVibration * effectiveHeight);
+                        }
+                        
+                        if (vOutput.position.z < 0) {
+                            vOutput.position.z = vOutput.position.z - _AmplitudeOfVibration * sin(_PeriodOfVibration * effectiveHeight);
+                        } else {
+                            vOutput.position.z = vOutput.position.z + _AmplitudeOfVibration * sin(_PeriodOfVibration * effectiveHeight);
+                        }
                     } 
                 }
                 
@@ -76,21 +84,23 @@
             fixed4 fragmentShader (vertexOutput vOutput) : SV_Target
             {
                 fixed4 col = fixed4(0,0,0,1); //black (default)
+                //col = fixed4(0,1,0,1); // DEBUG: uncomment to make objects visible
                 
                 if (_VibrationProgress > -1.0) {
                     float relativeHeight = (vOutput.localPosition.y + _MaxMeshY) / (_MaxMeshY * 2);
+                    float offsetFromRippleCenter = (_WidthOfVibration - abs(relativeHeight - _VibrationProgress)) / _WidthOfVibration - _ColorOffset; 
                     if (abs(relativeHeight - _VibrationProgress) < _WidthOfVibration) {
-                        col.x += (_WidthOfVibration - abs(relativeHeight - _VibrationProgress));
+                        /*col.x += (_WidthOfVibration - abs(relativeHeight - _VibrationProgress));
 						//col.x += (_WidthOfVibration - abs(relativeHeight - _VibrationProgress)); //will this change color?
                         col.y = 1 - (_WidthOfVibration - abs(relativeHeight - _VibrationProgress));
 						//col.y = 1 - (_WidthOfVibration - abs(relativeHeight - _VibrationProgress));
 						col.z += (_WidthOfVibration - abs(relativeHeight - _VibrationProgress));
 
-						//col *= _Color;
+						//col *= _Color;*/
+                        col.r = (_BaseColor.r + offsetFromRippleCenter);
+                        col.g = (_BaseColor.g + offsetFromRippleCenter);
+						col.b = (_BaseColor.b + offsetFromRippleCenter);
                     } 
-					col.g *= _Color;
-					col.r *= _Color + .25;
-					col.b *= _Color + .16;
                 }
                 
                 return col;
