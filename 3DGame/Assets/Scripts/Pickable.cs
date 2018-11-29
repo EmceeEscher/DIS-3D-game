@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(Rigidbody))]
 public class Pickable : MonoBehaviour {
 
     private Collider col;
@@ -18,20 +18,16 @@ public class Pickable : MonoBehaviour {
         pickedUp = true;
 
         // Disable the collider and rigidbody when picked up.
-        col.enabled = !col.enabled;
-        rbdy.isKinematic = !rbdy.isKinematic;
-
-        
+        rbdy.isKinematic = true ;
     }
-
-
+        
     // The player would collide with the object
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collided");
-        OnPickup(col, rbdy);
-
-        // transform this so it is in front of the player
+        if (collision.collider.tag == "Player")
+        {
+            OnPickup(col, rbdy);
+        }
     }
 
     
@@ -44,6 +40,5 @@ public class Pickable : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (IsPickedUp() == true) { OnPickup(col, rbdy); }
 	}
 }

@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectManager : MonoBehaviour {
-    // Show if can be picked up. Highlight?
-    // Listen for input. 
-    // Use this for initialization
 
-    private GameObject item;
+    // Only one object to be held
+    public GameObject hand = null;
+    public GameObject item;
+
     public bool showVision = false;
     public float visionDistance = 5F;
     public LayerMask layerMask;
+    public float zOffset = 1F, xOffset = 0.5F ;
+    public float throwForce = 10F;
+            
 
     // Check whatever is in front. It returns true if it hits an object with the interactable layer. 
-    // Interactable objects are either "Switchable" or "Pickable"
+    // Interactable objects are eithe r "Switchable" or "Pickable"
     GameObject CheckInFront() {
         RaycastHit hit;
         // Raycast checking if there is an object (that has 'interactable' layer) from visiondistance, 
@@ -28,40 +31,52 @@ public class ObjectManager : MonoBehaviour {
     }
 
     public void Throw(GameObject item) {
-        
+        item.GetComponent<Rigidbody>().isKinematic = false;
+        item.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce + transform.up * throwForce);
+        Debug.Log("Throw called");
+
     }
 
     public void TurnSwitch(GameObject item) {
         Debug.Log("Switched");
     }
 
+    public bool HasItem() {
+        return hand != null;
+    }
     void Start () {
             
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // if the collided game object is pickable and there are more items to pick up
+        if (collision.collider.gameObject.GetComponent<Pickable>() != null) {
+            item = collision.collider.gameObject;
+            hand = item;
+        }
+    }
+
+    private void holdItem(GameObject item) {
+        // put item to the position of the player plus a bit to the left.
+        item.transform.position = transform.position + (zOffset * transform.forward) + (xOffset * transform.right);
+        // locks rotation I think
+        item.transform.rotation = new Quaternion(0.0f, transform.rotation.y, 0.0f, transform.rotation.w);
+    }
+
+    // Update is called once per frame
+    void Update () {
         // Draws the ray if showVision is true. For debugging. 
-        if (showVision == true) {
-            Debug.DrawRay(transform.position, transform.forward * visionDistance, Color.red);
+        if (HasItem()) {
+            holdItem(item);
         }
-
-        // Sets item to be whatever is interacting with the ray. If false, it's null.
-
-        // Press E to interact. 
-
-
-        // If the item is picked up and it is a type of Pickable, then pressing E will throw that item
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E) && HasItem())
         {
-            item = CheckInFront();
-            if (item != null)
-            {
-                if (item.GetComponent<Pickable>() != null) Throw(item);
-                else if (item.GetComponent<Switchable>() != null) TurnSwitch(item);
-            }
-        }
+            hand = null;
+            Debug.Log("Thrown");
+            Throw(item);
 
+        }
 
 
     }
