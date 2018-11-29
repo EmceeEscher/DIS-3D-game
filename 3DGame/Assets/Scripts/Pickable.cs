@@ -6,6 +6,9 @@ public class Pickable : MonoBehaviour {
 
     private Collider col;
     private Rigidbody rbdy;
+    public GameObject player;
+    public float zOffset = 1;
+    public float xOffset = 1;
 
     private bool pickedUp = false;
 
@@ -18,20 +21,23 @@ public class Pickable : MonoBehaviour {
         pickedUp = true;
 
         // Disable the collider and rigidbody when picked up.
-        col.enabled = !col.enabled;
-        rbdy.isKinematic = !rbdy.isKinematic;
+        col.enabled = false;
+        rbdy.isKinematic = false;
 
-        
     }
 
-
+        
     // The player would collide with the object
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collided");
-        OnPickup(col, rbdy);
+
 
         // transform this so it is in front of the player
+        if (collision.collider.tag == "Player")
+        {
+            OnPickup(col, rbdy);
+            player = collision.collider.gameObject;
+        }
     }
 
     
@@ -45,5 +51,8 @@ public class Pickable : MonoBehaviour {
 	void Update () {
 
         if (IsPickedUp() == true) { OnPickup(col, rbdy); }
+        if (player != null) {
+            transform.position = player.transform.position + zOffset*player.transform.forward + xOffset*transform.right;
+        }
 	}
 }

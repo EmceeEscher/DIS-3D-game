@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectManager : MonoBehaviour {
-    // Show if can be picked up. Highlight?
-    // Listen for input. 
-    // Use this for initialization
 
-    private GameObject item;
+    public GameObject item;
     public bool showVision = false;
     public float visionDistance = 5F;
     public LayerMask layerMask;
+    private int numItems = 0;
+    public static int MAX_ITEMS = 3;
+    public GameObject[] inventory = new GameObject[MAX_ITEMS];
+            
 
     // Check whatever is in front. It returns true if it hits an object with the interactable layer. 
-    // Interactable objects are either "Switchable" or "Pickable"
+    // Interactable objects are eithe r "Switchable" or "Pickable"
     GameObject CheckInFront() {
         RaycastHit hit;
         // Raycast checking if there is an object (that has 'interactable' layer) from visiondistance, 
@@ -28,7 +29,7 @@ public class ObjectManager : MonoBehaviour {
     }
 
     public void Throw(GameObject item) {
-        
+
     }
 
     public void TurnSwitch(GameObject item) {
@@ -38,20 +39,25 @@ public class ObjectManager : MonoBehaviour {
     void Start () {
             
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // if the collided game object is pickable and there are more items to pick up
+        item = collision.collider.gameObject;
+        if (item.GetComponent<Pickable>() != null && numItems < MAX_ITEMS) {
+            // add it to inventory.
+            inventory[numItems] = item;
+            numItems++;
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
         // Draws the ray if showVision is true. For debugging. 
         if (showVision == true) {
             Debug.DrawRay(transform.position, transform.forward * visionDistance, Color.red);
         }
 
-        // Sets item to be whatever is interacting with the ray. If false, it's null.
-
-        // Press E to interact. 
-
-
-        // If the item is picked up and it is a type of Pickable, then pressing E will throw that item
         if (Input.GetKey(KeyCode.E))
         {
             item = CheckInFront();
