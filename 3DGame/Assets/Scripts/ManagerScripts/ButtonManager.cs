@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour {
 
+    public GameObject mainMenu;
+    public GameObject instructionsMenu;
+    public GameObject creditsMenu;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -23,6 +27,13 @@ public class ButtonManager : MonoBehaviour {
 
     public void ShowInstructions()
     {
+        mainMenu.SetActive(false);
+        instructionsMenu.SetActive(true);
+    }
 
+    public void ShowCredits()
+    {
+        mainMenu.SetActive(false);
+        creditsMenu.SetActive(true);
     }
 }
