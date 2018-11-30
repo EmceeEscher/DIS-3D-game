@@ -19,4 +19,9 @@ public class RestartButton : MonoBehaviour {
     {
         SceneManager.LoadScene(1); // Main game
     }
+
+    public void GoBackToTitle()
+    {
+        SceneManager.LoadScene(0); // Title screen
+    }
 }
