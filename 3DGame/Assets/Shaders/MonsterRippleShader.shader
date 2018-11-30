@@ -114,7 +114,7 @@ Shader "Ripples/MonsterRippleShader"
 
 			fixed4 fragmentShader(float4 screenPos : SV_POSITION, vertexOutput vOutput) : SV_Target
 			{
-				fixed4 col = fixed4(0,0,0,1);
+				fixed4 col = fixed4(0,0,0,0);
                 //col = fixed4(0.5, 0.5, 0.5, 1); //DEBUG: uncomment to make monster visible
 
 				// TODO use position information to change shader
