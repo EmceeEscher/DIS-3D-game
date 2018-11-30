@@ -13,6 +13,8 @@
         Pass 
         {
             CGPROGRAM
+// Upgrade NOTE: excluded shader from DX11, OpenGL ES 2.0 because it uses unsized arrays
+#pragma exclude_renderers d3d11 gles
 
             #pragma vertex vertexShader
             #pragma fragment fragmentShader
@@ -63,7 +65,7 @@
                     
                     // if point is within thickness of current ring, color it   
                     if (abs(diff) < _Ripples[i].w) {
-                        col = fixed4(1,0,0,1); //red
+                        col = fixed4(1,0,0,0); // Red
                         break;
                     }
                 }

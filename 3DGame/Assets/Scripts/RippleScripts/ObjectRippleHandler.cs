@@ -32,7 +32,7 @@ public class ObjectRippleHandler : MonoBehaviour {
     [Tooltip("How different the colors is at the center of the ripple vs. the edges. (Must be between 0 and 1.)")]
     public float colorOffset = 0.5f;
 
-    RippleManager rippleManager;
+    protected RippleManager rippleManager;
 
     protected Renderer renderer;
     protected float currVibrationTime = 0.0f;
@@ -98,7 +98,7 @@ public class ObjectRippleHandler : MonoBehaviour {
         UpdateFunction();
     }
 
-    float calculateDistance(Ripple ripple) {
+    protected float calculateDistance(Ripple ripple) {
         return Mathf.Sqrt(
             Mathf.Pow((ripple.centerX - transform.position.x), 2) + 
             Mathf.Pow((ripple.centerZ - transform.position.z), 2));
