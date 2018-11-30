@@ -14,16 +14,15 @@ Models from Google Poly:
 "metlic rode" by Ghulam Rasool  
 "Spike" by Dana Payne  
 "Portal" by Poly by Google  
-"Skeleton Key" by Jerad Bitner  
 "Heart" by Poly by Google  
-"Tree" by Poly by Google
+"Tree" by Poly by Google  
 
 Sounds from Freesound:  
 "Space choir" by trilly82  
 "Magical portal open" by alanmcki  
 "Ding" by Aiwha  
 "Squelch, muddy and squishy" by redafs  
-"LETTUCE_CRUNCH_002.wav" by JoelAudio
+"LETTUCE_CRUNCH_002" by JoelAudio  
 
 CC-BY license can be found here: https://creativecommons.org/licenses/by/3.0/legalcode  
 
@@ -32,5 +31,5 @@ Character controller code modified from UnityUtilities by Benno Lueders
 Footstep sounds from "Free Footsteps System" package by Pavel Cristian  
 Background images from "Dynamic Space Background Lite" package by Dinv Studio  
 Monster shader utilizes TV Static Shader by Unity Forum User dandeentremont  
-"Guasmally" font by Malre  
-"Maya" font by George Douros  
+"CompHand" font by j4p4n  
+"Rufscript" font by Hiran Venugopalan  
