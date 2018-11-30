@@ -47,6 +47,11 @@ public class MonsterMove : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        SetDestination();
+        
 	}
+
+    private void FixedUpdate()
+    {
+        SetDestination();
+    }
 }
