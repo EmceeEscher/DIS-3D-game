@@ -14,11 +14,12 @@ public class MonsterMove : MonoBehaviour {
     private GameObject player;
     private GameObject distraction;
     private float timer;
-    //private float playerDistance;
+    bool hasEatenPlayer = false;
 
     NavMeshAgent _navMeshAgent;
     CharacterFunctionality _characterFunctionality;
     Rigidbody rigidbody;
+    FadeoutManager fadeoutManager;
 
     private AudioSource audioSource;
     //public AudioClip breathing;
@@ -38,6 +39,8 @@ public class MonsterMove : MonoBehaviour {
 
         saveSpeed = _navMeshAgent.speed;
         SetDestination();
+
+        fadeoutManager = GameObject.FindWithTag("FadeoutManager").GetComponent<FadeoutManager>();
 	}
 
     public void setTimer(float time)
@@ -98,6 +101,11 @@ public class MonsterMove : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-
+        if (collision.collider.CompareTag("Player") && !hasEatenPlayer)
+        {
+            audioSource.PlayOneShot(eatDistraction);
+            StartCoroutine(fadeoutManager.FadeoutDeath());
+            hasEatenPlayer = true;
+        }
     }
 }
