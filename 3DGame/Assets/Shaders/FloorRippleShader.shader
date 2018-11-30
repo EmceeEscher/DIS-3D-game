@@ -53,8 +53,10 @@
             
             fixed4 fragmentShader (vertexOutput vOutput) : SV_Target
             {
+
                 fixed4 col = fixed4(0,0,0,1); //black (default)
-                
+				col = fixed4(0.5, 0.5, 0.7, 1); //DEBUG: uncomment to make floors/walls visible
+
                 // calculate if point is on current ring
                 for (int i = 0; i < _NumRipples; i++) {
                     float4 center = float4(_Ripples[i].x, vOutput.worldPosition.y, _Ripples[i].z, vOutput.worldPosition.w);

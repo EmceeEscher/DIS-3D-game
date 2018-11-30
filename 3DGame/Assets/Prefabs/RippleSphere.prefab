@@ -96,13 +96,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dce869c1fde741ed95f46d7875de7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVibrationTime: 2
+  maxVibrationTime: 3
   minVibrationHeight: -0.2
   maxVibrationHeight: 1.2
   vibrationWidth: 0.2
   vibrationPeriod: 10
   vibrationAmplitude: 0.05
   modelRadius: 11
+  baseColor: {r: 0.6666667, g: 0, b: 0.6509804, a: 0}
+  colorOffset: 0.5
 --- !u!135 &135803406668170288
 SphereCollider:
   m_ObjectHideFlags: 1

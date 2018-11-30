@@ -26,11 +26,18 @@ public class ObjectRippleHandler : MonoBehaviour {
     [Tooltip("Distance from center where ripple will activate vibration.")]
     public float modelRadius = 0.0f;
 
+    [Tooltip("Base color given to shader.")]
+    public Color baseColor;
+
+    [Tooltip("How different the colors is at the center of the ripple vs. the edges. (Must be between 0 and 1.)")]
+    public float colorOffset = 0.5f;
+
     protected RippleManager rippleManager;
 
     protected Renderer renderer;
     protected float currVibrationTime = 0.0f;
     protected bool isVibrating = false;
+
 
     // Use this for initialization
     void Start()
@@ -44,6 +51,9 @@ public class ObjectRippleHandler : MonoBehaviour {
         renderer.material.SetFloat("_WidthOfVibration", vibrationWidth);
         renderer.material.SetFloat("_PeriodOfVibration", vibrationPeriod);
         renderer.material.SetFloat("_AmplitudeOfVibration", vibrationAmplitude);
+
+        renderer.material.SetColor("_BaseColor", baseColor);
+        renderer.material.SetFloat("_ColorOffset", colorOffset);
 
         rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
     }
