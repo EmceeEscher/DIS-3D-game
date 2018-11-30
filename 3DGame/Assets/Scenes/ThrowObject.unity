@@ -639,7 +639,7 @@ MonoBehaviour:
     m_Bits: 256
   zOffset: 1
   xOffset: 0.3
-  throwForce: 30
+  throwForce: 300
 --- !u!65 &262021473
 BoxCollider:
   m_ObjectHideFlags: 0
