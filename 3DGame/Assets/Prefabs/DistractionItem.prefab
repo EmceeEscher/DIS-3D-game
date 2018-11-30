@@ -261,6 +261,7 @@ MonoBehaviour:
   rippleRadius: 10
   rippleThickness: 0.3
   timeBetweenRipples: 2
+  maxTimeAfterThrown: 20
   materialAfterPickup: {fileID: 2100000, guid: 1fce7508e15e3d246b1cc9eab14c198e, type: 2}
   pickupNoise: {fileID: 8300000, guid: f13f55f3c2e72394fa5df5d67b005598, type: 3}
   eatenNoise: {fileID: 8300000, guid: 8ff2cda0d0dc2de408770cc0df3ee261, type: 3}
