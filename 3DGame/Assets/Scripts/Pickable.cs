@@ -8,7 +8,6 @@ public class Pickable : MonoBehaviour {
     public float rippleRadius = 10f;
     public float rippleThickness = 1f;
     public float timeBetweenRipples = 2f;
-    public float timeBeforeDisappearance = 20f;
     public Material materialAfterPickup;
 
     private float timeSinceLastRipple = 0f;
@@ -36,17 +35,20 @@ public class Pickable : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("here0");
         if (hasBeenThrown)
         {
+            Debug.Log("here1");
             timeSinceLastRipple += Time.deltaTime;
             if (timeSinceLastRipple > timeBetweenRipples)
             {
+                Debug.Log("here2");
                 rippleManager.CreateRipple(
                                 transform.position.x,
                                 transform.position.z,
                                 rippleRadius,
                                 rippleThickness,
-                                "Throwable");
+                                gameObject.tag);
                 timeSinceLastRipple = 0f;
             }
         }
@@ -84,11 +86,12 @@ public class Pickable : MonoBehaviour {
         return hasBeenThrown;
     }
 
-    public void Throw()
+    public void Throw(Vector3 throwForce)
     {
         hasBeenThrown = true;
         rbdy.useGravity = true;
         rbdy.isKinematic = false;
+        rbdy.AddForce(throwForce);
         col.isTrigger = false;
     }
 

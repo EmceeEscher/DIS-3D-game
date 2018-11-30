@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1904565410385682}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.439744, y: 1.5, z: 23.022045}
+  m_LocalPosition: {x: 0.12, y: 10.703934, z: 41.94847}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 0}
@@ -220,7 +220,7 @@ MonoBehaviour:
   colorOffset: 0.5
 --- !u!114 &114985583338248596
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1904565410385682}
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rippleRadius: 10
-  rippleThickness: 1
+  rippleThickness: 0.3
   timeBetweenRipples: 2
   timeBeforeDisappearance: 20
   materialAfterPickup: {fileID: 2100000, guid: 1fce7508e15e3d246b1cc9eab14c198e, type: 2}
