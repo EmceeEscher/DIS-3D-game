@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
+
 public class Pickable : MonoBehaviour {
 
     public float rippleRadius = 10f;
@@ -15,7 +16,7 @@ public class Pickable : MonoBehaviour {
     private Collider col;
     private Rigidbody rbdy;
     private AudioSource aud;
-    private Renderer renderer;
+    private new Renderer renderer;
     private RippleManager rippleManager;
 
     private bool pickedUp = false;
@@ -26,6 +27,7 @@ public class Pickable : MonoBehaviour {
     {
         col = GetComponent<Collider>();
         rbdy = GetComponent<Rigidbody>();
+        aud = GetComponent<AudioSource>();
         renderer = GetComponent<Renderer>();
         rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
     }
@@ -63,14 +65,6 @@ public class Pickable : MonoBehaviour {
         renderer.material = materialAfterPickup;
     }
 
-    // The player would collide with the object
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.tag == "Player" && !hasBeenThrown)
-        {
-            OnPickup();
-        }
-    }
 
     private void OnTriggerEnter(Collider collider)
     {
@@ -81,6 +75,11 @@ public class Pickable : MonoBehaviour {
         }
     }
 
+    public bool HasBeenThrown()
+    {
+        return hasBeenThrown;
+    }
+
     public void Throw()
     {
         hasBeenThrown = true;
@@ -88,21 +87,5 @@ public class Pickable : MonoBehaviour {
         rbdy.isKinematic = false;
         col.isTrigger = false;
     }
-
-    // Use this for initialization
-    void Start () {
-        col = GetComponent<Collider>();
-        rbdy = GetComponent<Rigidbody>();
-        aud = GetComponent<AudioSource>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-	}
   
-    public bool HasBeenThrown()
-    {
-        return hasBeenThrown;
-    }
 }
