@@ -8,6 +8,7 @@ public class Pickable : MonoBehaviour {
 
     private Collider col;
     private Rigidbody rbdy;
+    private AudioSource aud;
 
     private bool pickedUp = false;
 
@@ -49,6 +50,7 @@ public class Pickable : MonoBehaviour {
     {
         if (collider.tag == "Player" && !hasBeenThrown)
         {
+            aud.Play(0);
             OnPickup(col, rbdy);
         }
     }
@@ -58,6 +60,7 @@ public class Pickable : MonoBehaviour {
     void Start () {
         col = GetComponent<Collider>();
         rbdy = GetComponent<Rigidbody>();
+        aud = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
