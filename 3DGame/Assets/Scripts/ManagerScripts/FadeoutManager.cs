@@ -9,13 +9,10 @@ public class FadeoutManager : MonoBehaviour {
     public Image fadeoutEndingImage;
     public Image fadeoutDeathImage;
     public float fadeoutTime = 2.0f;
-    public AudioClip fadeoutMusic;
-
-    AudioSource audioSource;
 
     // Use this for initialization
     void Start () {
-        audioSource = GetComponent<AudioSource>();
+
     }
 	
 	// Update is called once per frame

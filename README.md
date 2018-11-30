@@ -23,6 +23,8 @@ Sounds from Freesound:
 "Ding" by Aiwha  
 "Squelch, muddy and squishy" by redafs  
 "LETTUCE_CRUNCH_002" by JoelAudio  
+"ambient_hell" by Asteroiderer  
+"Elementary Wave 11" by deleted_user_2731495  
 
 CC-BY license can be found here: https://creativecommons.org/licenses/by/3.0/legalcode  
 
