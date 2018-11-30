@@ -4,23 +4,80 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Pickable : MonoBehaviour {
 
-    bool hasBeenThrown = false;
+    public float rippleRadius = 10f;
+    public float rippleThickness = 1f;
+    public float timeBetweenRipples = 2f;
+    public float timeBeforeDisappearance = 20f;
+    public Material materialAfterPickup;
+
+    private float timeSinceLastRipple = 0f;
 
     private Collider col;
     private Rigidbody rbdy;
+    private Renderer renderer;
+
+    private RippleManager rippleManager;
 
     private bool pickedUp = false;
+    private bool hasBeenThrown = false;
+
+    // Use this for initialization
+    void Start()
+    {
+        col = GetComponent<Collider>();
+        rbdy = GetComponent<Rigidbody>();
+        renderer = GetComponent<Renderer>();
+        rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (hasBeenThrown)
+        {
+            timeSinceLastRipple += Time.deltaTime;
+            if (timeSinceLastRipple > timeBetweenRipples)
+            {
+                rippleManager.CreateRipple(
+                                transform.position.x,
+                                transform.position.z,
+                                rippleRadius,
+                                rippleThickness,
+                                "Throwable");
+                timeSinceLastRipple = 0f;
+            }
+        }
+    }
 
     public bool IsPickedUp() { return pickedUp; }
 
     // Communicates to the object that this object is now being hit by the Raycast
     // (see CheckInFront method in ObjectManager)
-    public void OnPickup(Collider col, Rigidbody rbdy) {
+    public void OnPickup() {
 
         pickedUp = true;
 
         // Disable the collider and rigidbody when picked up.
         rbdy.isKinematic = true ;
+
+        renderer.material = materialAfterPickup;
+    }
+
+    // The player would collide with the object
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Player" && !hasBeenThrown)
+        {
+            OnPickup();
+        }
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.tag == "Player" && !hasBeenThrown)
+        {
+            OnPickup();
+        }
     }
 
     public void Throw()
@@ -35,33 +92,4 @@ public class Pickable : MonoBehaviour {
     {
         return hasBeenThrown;
     }
-
-    // The player would collide with the object
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.tag == "Player" && !hasBeenThrown)
-        {
-            OnPickup(col, rbdy);
-        }
-    }
-
-    private void OnTriggerEnter(Collider collider)
-    {
-        if (collider.tag == "Player" && !hasBeenThrown)
-        {
-            OnPickup(col, rbdy);
-        }
-    }
-
-
-    // Use this for initialization
-    void Start () {
-        col = GetComponent<Collider>();
-        rbdy = GetComponent<Rigidbody>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-	}
 }
