@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Pickable : MonoBehaviour {
 
+    bool hasBeenThrown = false;
+
     private Collider col;
     private Rigidbody rbdy;
 
@@ -20,11 +22,21 @@ public class Pickable : MonoBehaviour {
         // Disable the collider and rigidbody when picked up.
         rbdy.isKinematic = true ;
     }
-        
+
+    public void Throw()
+    {
+        hasBeenThrown = true;
+    }
+
+    public bool HasBeenThrown()
+    {
+        return hasBeenThrown;
+    }
+
     // The player would collide with the object
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Player")
+        if (collision.collider.tag == "Player" && !hasBeenThrown)
         {
             OnPickup(col, rbdy);
         }
