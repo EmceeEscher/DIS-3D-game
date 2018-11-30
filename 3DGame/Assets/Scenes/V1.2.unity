@@ -4549,8 +4549,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stepFrequency: 2
-  rippleRange: 20
-  rippleThickness: 1
+  rippleRange: 10
+  rippleThickness: 0.3
   rippleOffset: 0
   footstepClips: []
   isMoving: 0
