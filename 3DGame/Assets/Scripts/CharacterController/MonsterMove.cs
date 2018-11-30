@@ -10,7 +10,10 @@ public class MonsterMove : MonoBehaviour {
     Transform _destination;
 
     float saveSpeed;
+
     private GameObject player;
+    private GameObject distraction;
+    private float timer;
 
     NavMeshAgent _navMeshAgent;
     CharacterFunctionality _characterFunctionality;
@@ -22,13 +25,40 @@ public class MonsterMove : MonoBehaviour {
 
         player = GameObject.FindWithTag("Player");
 
+        timer = -1.0f;
+
         saveSpeed = _navMeshAgent.speed;
         SetDestination();
 	}
 
+    public void setTimer(float time)
+    {
+        timer = time;
+    }
+
     private void SetDestination()
     {
-        if (!player.GetComponent<CharacterFunctionality>().isMoving)
+        if (distraction == null)
+        {
+            foreach (GameObject item in GameObject.FindGameObjectsWithTag("Distraction"))
+            {
+                if (item.GetComponent<Pickable>().HasBeenThrown())
+                {
+                    distraction = item;
+                }
+            }
+        }
+
+        if (distraction != null)
+        {
+            _destination = distraction.transform;
+        }
+        else
+        {
+            _destination = player.transform;    
+        }
+        
+        if (distraction == null && !player.GetComponent<CharacterFunctionality>().isMoving)
         {
             _characterFunctionality.isMoving = false;
             _navMeshAgent.speed = 0;
@@ -39,7 +69,7 @@ public class MonsterMove : MonoBehaviour {
         }
 
         if(_destination != null) {
-            Vector3 targetVector = _destination.transform.position;
+            Vector3 targetVector = _destination.position;
             _navMeshAgent.SetDestination(targetVector);
         }
     }
@@ -47,11 +77,27 @@ public class MonsterMove : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        
+        if(timer >= 0) 
+        {
+            timer -= Time.deltaTime;
+            if(timer < 0) {
+                Destroy(distraction);
+                distraction = null;
+            }
+        }
 	}
 
     private void FixedUpdate()
     {
         SetDestination();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Distraction") && collision.gameObject.GetComponent<Pickable>().HasBeenThrown())
+        {
+            distraction = null;
+            Destroy(collision.gameObject);
+        }
     }
 }

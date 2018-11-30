@@ -2,92 +2,73 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class ObjectManager : MonoBehaviour {
 
     // Only one object to be held
     public GameObject hand = null;
-    public GameObject item;
 
-    public bool showVision = false;
     public float visionDistance = 5F;
     public LayerMask layerMask;
-    public float zOffset = 1F, xOffset = 0.5F ;
+    public float zOffset = 1F, xOffset = 0.5F, yOffset = 0.5F;
     public float throwForce = 10F;
             
 
-    // Check whatever is in front. It returns true if it hits an object with the interactable layer. 
-    // Interactable objects are eithe r "Switchable" or "Pickable"
-    GameObject CheckInFront() {
-        RaycastHit hit;
-        // Raycast checking if there is an object (that has 'interactable' layer) from visiondistance, 
-        // highlight this object.
-        if (Physics.Raycast(transform.position, transform.forward, out hit, visionDistance, layerMask)) {
-            Debug.DrawRay(transform.position, transform.forward * visionDistance, Color.blue);
+    void Start() {
 
-
-            return hit.collider.gameObject;
-        }
-        return null;
     }
 
     public void Throw(GameObject item) {
-        item.GetComponent<Rigidbody>().isKinematic = false;
-        item.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce + transform.up * throwForce);
-        item.GetComponent<Pickable>().Throw();
+
+        Rigidbody rbdy = item.GetComponent<Rigidbody>();
+        Collider col = item.GetComponent<Collider>();
+        rbdy.useGravity = true;
+        rbdy.isKinematic = false;
+        rbdy.AddForce(transform.forward * throwForce + transform.up * throwForce);
+        col.isTrigger = false;
+        GameObject.FindWithTag("Monster").GetComponent<MonsterMove>().setTimer(15.0f);
     }
 
-    public void TurnSwitch(GameObject item) {
-        Debug.Log("Switched");
-    }
 
     public bool HasItem() {
         return hand != null;
     }
-    void Start () {
-            
-	}
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        // if the collided game object is pickable and there are more items to pick up
-        if (collision.collider.gameObject.GetComponent<Pickable>() != null 
-            && !collision.collider.gameObject.GetComponent<Pickable>().HasBeenThrown()) {
-            item = collision.collider.gameObject;
-            hand = item;
-        }
-    }
 
     private void OnTriggerEnter(Collider collider)
     {
-        // if the collided game object is pickable and there are more items to pick up
+        // if hand is empty, object is pickable, and it hasn't been thrown.
         if (collider.gameObject.GetComponent<Pickable>() != null
-            && !collider.gameObject.GetComponent<Pickable>().HasBeenThrown())
+            && !collider.gameObject.GetComponent<Pickable>().HasBeenThrown()
+            && HasItem() == false)
         {
-            item = collider.gameObject;
-            hand = item;
+
+            hand = collider.gameObject;
         }
     }
 
-    private void holdItem(GameObject item) {
+    private void HoldItem(GameObject item) {
         // put item to the position of the player plus a bit to the left.
-        item.transform.position = transform.position + (zOffset * transform.forward) + (xOffset * transform.right);
+        item.transform.position = transform.position 
+            + (zOffset * transform.forward) 
+            + (xOffset * transform.right) 
+            + (yOffset * transform.up);
         // locks rotation I think
         item.transform.rotation = new Quaternion(0.0f, transform.rotation.y, 0.0f, transform.rotation.w);
     }
 
     // Update is called once per frame
     void Update () {
-        // Draws the ray if showVision is true. For debugging. 
+
         if (HasItem()) {
-            holdItem(item);
+            HoldItem(hand);
         }
+        // if E is pressed and there's something in hand,
         if (Input.GetKey(KeyCode.E) && HasItem())
         {
-            hand = null;
+            GameObject item = hand;
             Throw(item);
-
+            hand = null;
         }
-
-
     }
 }
