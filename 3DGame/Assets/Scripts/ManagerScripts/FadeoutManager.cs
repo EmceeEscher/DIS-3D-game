@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FadeoutManager : MonoBehaviour {
 
-    public Image fadeoutImage;
+    public Image fadeoutEndingImage;
+    public Image fadeoutDeathImage;
     public float fadeoutTime = 2.0f;
     public AudioClip fadeoutMusic;
 
@@ -21,10 +23,22 @@ public class FadeoutManager : MonoBehaviour {
 		
 	}
 
-    public IEnumerator Fadeout()
+    public IEnumerator FadeoutEnding()
     {
-        audioSource.PlayOneShot(fadeoutMusic);
+        StartCoroutine(Fadeout(fadeoutEndingImage));
+        yield return new WaitForSeconds(fadeoutTime);
+        SceneManager.LoadScene(3); // Ending Scene
+    }
 
+    public IEnumerator FadeoutDeath()
+    {
+        StartCoroutine(Fadeout(fadeoutDeathImage));
+        yield return new WaitForSeconds(fadeoutTime);
+        SceneManager.LoadScene(2); // Death Scene
+    }
+
+    public IEnumerator Fadeout(Image fadeoutImage)
+    {
         Color currentColor = fadeoutImage.color;
         Color visibleColor = fadeoutImage.color;
         visibleColor.a = 1f;
@@ -37,7 +51,5 @@ public class FadeoutManager : MonoBehaviour {
             fadeoutImage.color = Color.Lerp(currentColor, visibleColor, counter / fadeoutTime);
             yield return null;
         }
-
-        //TODO load scene with end credits after this
     }
 }
