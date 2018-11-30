@@ -200,8 +200,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e47c509bf73a33479c91f6892469449, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!135 &102667862
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -290,8 +290,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd04007fd76fca1449d7836f7c0614bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   axes: 0
   sensitivityX: 15
   sensitivityY: 15
@@ -308,8 +308,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b10c89e1c29b5844d9e652925a826bbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &262021466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,8 +319,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4c1bdf4996bfab45a24f07cbca19168, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   canControl: 1
   useFixedUpdate: 1
   movement:
@@ -542,8 +542,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b36cce50725fd4d1286a26b56a7e0584, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   stepFrequency: 2
   rippleRange: 20
   rippleThickness: 1
@@ -575,8 +575,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b36cce50725fd4d1286a26b56a7e0584, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   stepFrequency: 2
   rippleRange: 20
   rippleThickness: 1
@@ -592,8 +592,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a57add4630933041b79a3a51839e444, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   hand: {fileID: 0}
   item: {fileID: 0}
   showVision: 1
@@ -603,11 +603,7 @@ MonoBehaviour:
     m_Bits: 256
   zOffset: 1
   xOffset: 0.3
-<<<<<<< HEAD
-  throwForce: 300
-=======
   throwForce: 130
->>>>>>> a37d734d39147169279f5e32e49aa04ad0aac180
 --- !u!65 &262021473
 BoxCollider:
   m_ObjectHideFlags: 0
