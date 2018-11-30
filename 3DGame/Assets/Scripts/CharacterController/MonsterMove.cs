@@ -14,14 +14,21 @@ public class MonsterMove : MonoBehaviour {
     private GameObject player;
     private GameObject distraction;
     private float timer;
+    //private float playerDistance;
 
     NavMeshAgent _navMeshAgent;
     CharacterFunctionality _characterFunctionality;
+
+    private AudioSource aud;
+    //public AudioClip breathing;
+    public AudioClip eatDistraction;
 
 	// Use this for initialization
 	void Start () {
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
         _characterFunctionality = this.GetComponent<CharacterFunctionality>();
+
+        AudioSource aud = GetComponent<AudioSource>();
 
         player = GameObject.FindWithTag("Player");
 
@@ -77,7 +84,12 @@ public class MonsterMove : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if(timer >= 0) 
+
+        //float playerDistance = player.transform.position - transform.position;
+        
+
+
+        if (timer >= 0) 
         {
             timer -= Time.deltaTime;
             if(timer < 0) {
@@ -98,6 +110,7 @@ public class MonsterMove : MonoBehaviour {
         {
             distraction = null;
             // sound for eating object
+            aud.PlayOneShot(eatDistraction);
             Destroy(collision.gameObject);
         }
     }
