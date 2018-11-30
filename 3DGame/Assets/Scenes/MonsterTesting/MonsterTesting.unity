@@ -740,6 +740,11 @@ Prefab:
       propertyPath: _destination
       value: 
       objectReference: {fileID: 1823979817}
+    - target: {fileID: 195676018167418152, guid: 46646631a8dc04094a46e158112f7721,
+        type: 2}
+      propertyPath: m_Speed
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46646631a8dc04094a46e158112f7721, type: 2}
   m_IsPrefabAsset: 0

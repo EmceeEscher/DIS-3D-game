@@ -31,6 +31,7 @@ public class FloorRippleHandler : MonoBehaviour {
         for (int i = 0; i < maxNumRipples; i++)
         {
             Ripple ripple = ripples[i];
+            Debug.Log(ripple.sourceTag);
             if (ripple.isActive)
             {
                 rippleData[i].x = ripple.centerX;
@@ -43,8 +44,6 @@ public class FloorRippleHandler : MonoBehaviour {
                 rippleData[i].y = 0f;
                 rippleData[i].w = 0f;
             }
-            Debug.Log(ripple.sourceTag);
-
         }
         renderer.material.SetVectorArray("_Ripples", rippleData);
 
