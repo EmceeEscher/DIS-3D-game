@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 136075553727338212}
   - component: {fileID: 54407067071013116}
   - component: {fileID: 114507950288104172}
+  - component: {fileID: 114107131264048268}
   m_Layer: 0
   m_Name: DistractionItem
   m_TagString: Untagged
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1904565410385682}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.3578675, y: 2.13, z: 0.24972129}
+  m_LocalPosition: {x: 5.820738, y: 1.5, z: 23.979973}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 0}
@@ -101,6 +102,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114107131264048268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1904565410385682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dce869c1fde741ed95f46d7875de7d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVibrationTime: 2
+  minVibrationHeight: -0.2
+  maxVibrationHeight: 1.2
+  vibrationWidth: 0.5
+  vibrationPeriod: 25
+  vibrationAmplitude: 5
+  modelRadius: 0
+  baseColor: {r: 1, g: 0, b: 0, a: 0}
+  colorOffset: 0.5
 --- !u!114 &114507950288104172
 MonoBehaviour:
   m_ObjectHideFlags: 1
