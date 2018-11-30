@@ -14,9 +14,8 @@ Models from Google Poly:
 "metlic rode" by Ghulam Rasool  
 "Spike" by Dana Payne  
 "Portal" by Poly by Google  
-"Skeleton Key" by Jerad Bitner  
-"Heart" by Poly by Google 
-"Tree" by Poly by Google
+"Heart" by Poly by Google  
+"Tree" by Poly by Google  
 
 Sounds from Freesound:  
 "Space choir" by trilly82  

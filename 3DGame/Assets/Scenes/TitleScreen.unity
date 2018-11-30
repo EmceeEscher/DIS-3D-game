@@ -1017,7 +1017,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Title
+  m_Text: Tremor
 --- !u!222 &484661859
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2562,7 +2562,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 76636adc27bcf48c5a0553fa4038e2eb, type: 3}
-    m_FontSize: 29
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -2573,7 +2573,37 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Instructions woooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+  m_Text: 'Controls:
+
+
+    WASD to move
+
+    Mouse to look
+
+    E to throw carried item
+
+
+    Instructions:
+
+
+    It is following you.
+
+
+    When it catches you, it will kill you.
+
+
+    But it can only see you when you move.
+
+
+    Find the golden items to open a portal and escape.
+
+
+    Pick up and throw the red items to distract it.
+
+
+    Survive.
+
+'
 --- !u!222 &1391586068
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3045,9 +3075,9 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "The following assets were used under the CC-BY license, with modification:
-    \ \n\nModels from Google Poly:  \n\"FeatherShell\" by Don Whitaker  \n\"metlic
-    rode\" by Ghulam Rasool  \n\"Spike\" by Dana Payne  \n\"Portal\" by Poly by Google
-    \ \n\"Skeleton Key\" by Jerad Bitner  \n\nSounds from Freesound:  \n\"Space choir\"
+    \ \n\nModels:  \n\"FeatherShell\" by Don Whitaker  \n\"metlic rode\" by Ghulam
+    Rasool  \n\"Spike\" by Dana Payne  \n\"Portal\" by Poly by Google  \n\"Heart\"
+    by Poly by Google  \n\"Tree\" by Poly by Google  \n\nSounds:  \n\"Space choir\"
     by trilly82  \n\"Magical portal open\" by alanmcki  \n\"Ding\" by Aiwha  \n\nCC-BY
     license can be found here: https://creativecommons.org/licenses/by/3.0/legalcode
     \ "
