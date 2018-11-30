@@ -13,8 +13,8 @@
         Pass 
         {
             CGPROGRAM
-// Upgrade NOTE: excluded shader from DX11, OpenGL ES 2.0 because it uses unsized arrays
-#pragma exclude_renderers d3d11 gles
+			// Upgrade NOTE: excluded shader from DX11, OpenGL ES 2.0 because it uses unsized arrays
+			//#pragma exclude_renderers d3d11 gles
 
             #pragma vertex vertexShader
             #pragma fragment fragmentShader
@@ -34,6 +34,7 @@
             
             int _NumRipples = 3; // must be less than the size of the _Ripples array below
             float4 _Ripples[50];
+            float4 _RippleColors[50];
 
             vertexOutput vertexShader (vertexInput vInput)
             {
@@ -65,7 +66,7 @@
                     
                     // if point is within thickness of current ring, color it   
                     if (abs(diff) < _Ripples[i].w) {
-                        col = fixed4(1,0,0,0); // Red
+                        col = _RippleColors[i]; // Red
                         break;
                     }
                 }
