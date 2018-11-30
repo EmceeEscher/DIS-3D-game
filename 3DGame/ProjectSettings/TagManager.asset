@@ -8,6 +8,8 @@ TagManager:
   - Monster
   - GoalManager
   - FadeoutManager
+  - Objects
+  - Distraction
   layers:
   - Default
   - TransparentFX
