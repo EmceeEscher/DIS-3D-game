@@ -34,6 +34,8 @@ public class ObjectManager : MonoBehaviour {
         item.GetComponent<Rigidbody>().isKinematic = false;
         item.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce + transform.up * throwForce);
         item.GetComponent<Pickable>().Throw();
+
+        GameObject.FindWithTag("Monster").GetComponent<MonsterMove>().setTimer(15.0f);
     }
 
     public void TurnSwitch(GameObject item) {

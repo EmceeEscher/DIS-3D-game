@@ -23,12 +23,11 @@ GameObject:
   - component: {fileID: 23447509434008738}
   - component: {fileID: 136075553727338212}
   - component: {fileID: 54407067071013116}
-  - component: {fileID: 114507950288104172}
   - component: {fileID: 114107131264048268}
   - component: {fileID: 82272731827546426}
   m_Layer: 0
   m_Name: DistractionItem
-  m_TagString: Untagged
+  m_TagString: Distraction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1904565410385682}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.820738, y: 1.5, z: 23.979973}
+  m_LocalPosition: {x: 4.439744, y: 1.5, z: 23.022045}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 0}
@@ -218,7 +217,7 @@ MonoBehaviour:
   modelRadius: 0
   baseColor: {r: 1, g: 0, b: 0, a: 0}
   colorOffset: 0.5
---- !u!114 &114507950288104172
+--- !u!114 &114985583338248596
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,6 +228,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50698673896c324b86f04497c170bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rippleRadius: 10
+  rippleThickness: 0.3
+  timeBetweenRipples: 2
+  timeBeforeDisappearance: 20
 --- !u!136 &136075553727338212
 CapsuleCollider:
   m_ObjectHideFlags: 1
