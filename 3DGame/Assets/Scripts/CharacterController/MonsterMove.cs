@@ -97,6 +97,7 @@ public class MonsterMove : MonoBehaviour {
         if (collision.gameObject.CompareTag("Distraction") && collision.gameObject.GetComponent<Pickable>().HasBeenThrown())
         {
             distraction = null;
+            // sound for eating object
             Destroy(collision.gameObject);
         }
     }
