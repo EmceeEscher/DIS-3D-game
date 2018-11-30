@@ -14,8 +14,8 @@ public class Pickable : MonoBehaviour {
 
     private Collider col;
     private Rigidbody rbdy;
+    private AudioSource aud;
     private Renderer renderer;
-
     private RippleManager rippleManager;
 
     private bool pickedUp = false;
@@ -76,6 +76,7 @@ public class Pickable : MonoBehaviour {
     {
         if (collider.tag == "Player" && !hasBeenThrown)
         {
+            aud.Play(0);
             OnPickup();
         }
     }
@@ -88,6 +89,18 @@ public class Pickable : MonoBehaviour {
         col.isTrigger = false;
     }
 
+    // Use this for initialization
+    void Start () {
+        col = GetComponent<Collider>();
+        rbdy = GetComponent<Rigidbody>();
+        aud = GetComponent<AudioSource>();
+	}
+	
+	// Update is called once per frame
+	void Update () {
+
+	}
+  
     public bool HasBeenThrown()
     {
         return hasBeenThrown;
