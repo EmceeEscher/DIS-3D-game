@@ -18,6 +18,7 @@ public class MonsterMove : MonoBehaviour {
 
     NavMeshAgent _navMeshAgent;
     CharacterFunctionality _characterFunctionality;
+    Rigidbody rigidbody;
 
     private AudioSource audioSource;
     //public AudioClip breathing;
@@ -27,6 +28,7 @@ public class MonsterMove : MonoBehaviour {
 	void Start () {
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
         _characterFunctionality = this.GetComponent<CharacterFunctionality>();
+        rigidbody = GetComponent<Rigidbody>();
 
         audioSource = GetComponent<AudioSource>();
 
@@ -70,6 +72,7 @@ public class MonsterMove : MonoBehaviour {
         {
             _characterFunctionality.isMoving = false;
             _navMeshAgent.speed = 0;
+            rigidbody.velocity = Vector3.zero;
         }
         else {
             _characterFunctionality.isMoving = true;
@@ -85,8 +88,8 @@ public class MonsterMove : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-    
-	}
+
+    }
 
     private void FixedUpdate()
     {
