@@ -18,8 +18,9 @@ public class MonsterMove : MonoBehaviour {
 
     NavMeshAgent _navMeshAgent;
     CharacterFunctionality _characterFunctionality;
+    Rigidbody rigidbody;
 
-    private AudioSource aud;
+    private AudioSource audioSource;
     //public AudioClip breathing;
     public AudioClip eatDistraction;
 
@@ -27,8 +28,9 @@ public class MonsterMove : MonoBehaviour {
 	void Start () {
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
         _characterFunctionality = this.GetComponent<CharacterFunctionality>();
+        rigidbody = GetComponent<Rigidbody>();
 
-        AudioSource aud = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
 
         player = GameObject.FindWithTag("Player");
 
@@ -52,6 +54,7 @@ public class MonsterMove : MonoBehaviour {
                 if (item.GetComponent<Pickable>().HasBeenThrown())
                 {
                     distraction = item;
+                    break;
                 }
             }
         }
@@ -69,6 +72,7 @@ public class MonsterMove : MonoBehaviour {
         {
             _characterFunctionality.isMoving = false;
             _navMeshAgent.speed = 0;
+            rigidbody.velocity = Vector3.zero;
         }
         else {
             _characterFunctionality.isMoving = true;
@@ -85,19 +89,7 @@ public class MonsterMove : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        //float playerDistance = player.transform.position - transform.position;
-        
-
-
-        if (timer >= 0) 
-        {
-            timer -= Time.deltaTime;
-            if(timer < 0) {
-                Destroy(distraction);
-                distraction = null;
-            }
-        }
-	}
+    }
 
     private void FixedUpdate()
     {
@@ -106,12 +98,6 @@ public class MonsterMove : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Distraction") && collision.gameObject.GetComponent<Pickable>().HasBeenThrown())
-        {
-            distraction = null;
-            // sound for eating object
-            aud.PlayOneShot(eatDistraction);
-            Destroy(collision.gameObject);
-        }
+
     }
 }
