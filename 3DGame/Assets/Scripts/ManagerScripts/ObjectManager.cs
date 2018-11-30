@@ -33,8 +33,7 @@ public class ObjectManager : MonoBehaviour {
     public void Throw(GameObject item) {
         item.GetComponent<Rigidbody>().isKinematic = false;
         item.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce + transform.up * throwForce);
-        Debug.Log("Throw called");
-
+        item.GetComponent<Pickable>().Throw();
     }
 
     public void TurnSwitch(GameObject item) {
@@ -51,8 +50,20 @@ public class ObjectManager : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         // if the collided game object is pickable and there are more items to pick up
-        if (collision.collider.gameObject.GetComponent<Pickable>() != null) {
+        if (collision.collider.gameObject.GetComponent<Pickable>() != null 
+            && !collision.collider.gameObject.GetComponent<Pickable>().HasBeenThrown()) {
             item = collision.collider.gameObject;
+            hand = item;
+        }
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        // if the collided game object is pickable and there are more items to pick up
+        if (collider.gameObject.GetComponent<Pickable>() != null
+            && !collider.gameObject.GetComponent<Pickable>().HasBeenThrown())
+        {
+            item = collider.gameObject;
             hand = item;
         }
     }
@@ -73,7 +84,6 @@ public class ObjectManager : MonoBehaviour {
         if (Input.GetKey(KeyCode.E) && HasItem())
         {
             hand = null;
-            Debug.Log("Thrown");
             Throw(item);
 
         }

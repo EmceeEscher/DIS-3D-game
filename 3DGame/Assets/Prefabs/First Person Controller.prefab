@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 114932145785336864}
   - component: {fileID: 114977515012237900}
   - component: {fileID: 114697572347737506}
+  - component: {fileID: 114455719649979380}
   m_Layer: 0
   m_Name: First Person Controller
   m_TagString: Player
@@ -75,15 +76,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1666221106264982}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4484131, y: 1.78, z: -3.08}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 5.5, y: 1.78, z: 27.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4625049881963494}
   - {fileID: 4414713958740634}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4414713958740634
 Transform:
   m_ObjectHideFlags: 1
@@ -300,7 +301,7 @@ Behaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1456652169550622}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &114178082972661204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -322,6 +323,27 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 62ac9bf37e313514e81b24534d632d69, type: 3}
   - {fileID: 8300000, guid: de00eccdf54c99c40b5bd4bddfb8502c, type: 3}
   isMoving: 0
+--- !u!114 &114455719649979380
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1666221106264982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a57add4630933041b79a3a51839e444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 0}
+  item: {fileID: 0}
+  showVision: 0
+  visionDistance: 5
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  zOffset: 1
+  xOffset: 0.5
+  throwForce: 500
 --- !u!114 &114697572347737506
 MonoBehaviour:
   m_ObjectHideFlags: 1

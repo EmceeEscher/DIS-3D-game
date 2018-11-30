@@ -13,6 +13,8 @@
         Pass 
         {
             CGPROGRAM
+			// Upgrade NOTE: excluded shader from DX11, OpenGL ES 2.0 because it uses unsized arrays
+			//#pragma exclude_renderers d3d11 gles
 
             #pragma vertex vertexShader
             #pragma fragment fragmentShader
@@ -53,7 +55,7 @@
             {
 
                 fixed4 col = fixed4(0,0,0,1); //black (default)
-				col = fixed4(0.5, 0.5, 0.7, 1); //DEBUG: uncomment to make floors/walls visible
+				//col = fixed4(0.5, 0.5, 0.7, 1); //DEBUG: uncomment to make floors/walls visible
 
                 // calculate if point is on current ring
                 for (int i = 0; i < _NumRipples; i++) {
@@ -63,7 +65,7 @@
                     
                     // if point is within thickness of current ring, color it   
                     if (abs(diff) < _Ripples[i].w) {
-                        col = fixed4(1,0,0,1); //red
+                        col = fixed4(1,0,0,0); // Red
                         break;
                     }
                 }

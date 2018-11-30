@@ -25,9 +25,11 @@ GameObject:
   - component: {fileID: 54645787452373346}
   - component: {fileID: 114892978694320024}
   - component: {fileID: 195676018167418152}
+  - component: {fileID: 114067658050880686}
+  - component: {fileID: 114076151137711294}
   m_Layer: 0
   m_Name: Monster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1191179117899692}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.33, y: 1, z: -4}
+  m_LocalPosition: {x: -9.87, y: 1, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,6 +104,41 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114067658050880686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1191179117899692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96b29ef249846440a1f8a1fb664d5b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVibrationTime: 5
+  minVibrationHeight: -0.2
+  maxVibrationHeight: 1.2
+  vibrationWidth: 0.5
+  vibrationPeriod: 25
+  vibrationAmplitude: 3
+  modelRadius: 0
+--- !u!114 &114076151137711294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1191179117899692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36cce50725fd4d1286a26b56a7e0584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepFrequency: 1
+  rippleRange: 15
+  rippleThickness: 0.3
+  rippleOffset: 0
+  footstepClips: []
+  isMoving: 0
 --- !u!114 &114892978694320024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,7 +173,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5000001
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
