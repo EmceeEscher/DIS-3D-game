@@ -14,8 +14,8 @@ public class Pickable : MonoBehaviour {
 
     private Collider col;
     private Rigidbody rbdy;
+    private AudioSource aud;
     private Renderer renderer;
-
     private RippleManager rippleManager;
 
     private bool pickedUp = false;
@@ -27,6 +27,7 @@ public class Pickable : MonoBehaviour {
         col = GetComponent<Collider>();
         rbdy = GetComponent<Rigidbody>();
         renderer = GetComponent<Renderer>();
+        aud = GetComponent<AudioSource>();
         rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
     }
 
@@ -71,6 +72,7 @@ public class Pickable : MonoBehaviour {
             && !hasBeenThrown 
             && collider.gameObject.GetComponent<ObjectManager>().HasItem() == false)
         {
+            aud.Play(0);
             OnPickup();
         }
     }
@@ -83,6 +85,8 @@ public class Pickable : MonoBehaviour {
         col.isTrigger = false;
     }
 
+
+  
     public bool HasBeenThrown()
     {
         return hasBeenThrown;

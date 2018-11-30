@@ -26,7 +26,7 @@ public class ObjectManager : MonoBehaviour {
         rbdy.isKinematic = false;
         rbdy.AddForce(transform.forward * throwForce + transform.up * throwForce);
         col.isTrigger = false;
-
+        GameObject.FindWithTag("Monster").GetComponent<MonsterMove>().setTimer(15.0f);
     }
 
 
