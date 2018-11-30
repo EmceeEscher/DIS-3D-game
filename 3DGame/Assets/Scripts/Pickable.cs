@@ -26,6 +26,9 @@ public class Pickable : MonoBehaviour {
     public void Throw()
     {
         hasBeenThrown = true;
+        rbdy.useGravity = true;
+        rbdy.isKinematic = false;
+        col.isTrigger = false;
     }
 
     public bool HasBeenThrown()
@@ -42,7 +45,15 @@ public class Pickable : MonoBehaviour {
         }
     }
 
-    
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.tag == "Player" && !hasBeenThrown)
+        {
+            OnPickup(col, rbdy);
+        }
+    }
+
+
     // Use this for initialization
     void Start () {
         col = GetComponent<Collider>();

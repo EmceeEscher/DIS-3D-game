@@ -57,6 +57,17 @@ public class ObjectManager : MonoBehaviour {
         }
     }
 
+    private void OnTriggerEnter(Collider collider)
+    {
+        // if the collided game object is pickable and there are more items to pick up
+        if (collider.gameObject.GetComponent<Pickable>() != null
+            && !collider.gameObject.GetComponent<Pickable>().HasBeenThrown())
+        {
+            item = collider.gameObject;
+            hand = item;
+        }
+    }
+
     private void holdItem(GameObject item) {
         // put item to the position of the player plus a bit to the left.
         item.transform.position = transform.position + (zOffset * transform.forward) + (xOffset * transform.right);
