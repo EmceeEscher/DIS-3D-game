@@ -22,6 +22,8 @@ Sounds from Freesound:
 "Space choir" by trilly82  
 "Magical portal open" by alanmcki  
 "Ding" by Aiwha  
+"Squelch, muddy and squishy" by redafs
+"LETTUCE_CRUNCH_002.wav" by JoelAudio
 
 CC-BY license can be found here: https://creativecommons.org/licenses/by/3.0/legalcode  
 
