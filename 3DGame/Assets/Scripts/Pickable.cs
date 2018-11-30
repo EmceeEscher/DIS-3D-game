@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
+
 public class Pickable : MonoBehaviour {
 
     public float rippleRadius = 10f;
@@ -15,7 +16,7 @@ public class Pickable : MonoBehaviour {
     private Collider col;
     private Rigidbody rbdy;
     private AudioSource aud;
-    private Renderer renderer;
+    private new Renderer renderer;
     private RippleManager rippleManager;
 
     private bool pickedUp = false;
@@ -26,6 +27,7 @@ public class Pickable : MonoBehaviour {
     {
         col = GetComponent<Collider>();
         rbdy = GetComponent<Rigidbody>();
+        aud = GetComponent<AudioSource>();
         renderer = GetComponent<Renderer>();
         aud = GetComponent<AudioSource>();
         rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
@@ -63,8 +65,8 @@ public class Pickable : MonoBehaviour {
         renderer.material = materialAfterPickup;
     }
 
-    // The player would collide with the object
 
+    // The player would collide with the object
     private void OnTriggerEnter(Collider collider)
     {
         // AND If the player is not carrying something
@@ -77,6 +79,11 @@ public class Pickable : MonoBehaviour {
         }
     }
 
+    public bool HasBeenThrown()
+    {
+        return hasBeenThrown;
+    }
+
     public void Throw()
     {
         hasBeenThrown = true;
@@ -85,10 +92,5 @@ public class Pickable : MonoBehaviour {
         col.isTrigger = false;
     }
 
-
   
-    public bool HasBeenThrown()
-    {
-        return hasBeenThrown;
-    }
 }

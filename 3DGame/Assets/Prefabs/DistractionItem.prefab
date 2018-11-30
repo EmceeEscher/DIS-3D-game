@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54407067071013116}
   - component: {fileID: 114107131264048268}
   - component: {fileID: 82272731827546426}
+  - component: {fileID: 114985583338248596}
   m_Layer: 0
   m_Name: DistractionItem
   m_TagString: Distraction
@@ -219,7 +220,7 @@ MonoBehaviour:
   colorOffset: 0.5
 --- !u!114 &114985583338248596
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1904565410385682}
@@ -229,9 +230,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rippleRadius: 10
-  rippleThickness: 0.3
+  rippleThickness: 1
   timeBetweenRipples: 2
   timeBeforeDisappearance: 20
+  materialAfterPickup: {fileID: 2100000, guid: 1fce7508e15e3d246b1cc9eab14c198e, type: 2}
 --- !u!136 &136075553727338212
 CapsuleCollider:
   m_ObjectHideFlags: 1

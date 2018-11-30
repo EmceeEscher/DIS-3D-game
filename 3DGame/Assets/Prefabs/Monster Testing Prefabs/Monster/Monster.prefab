@@ -21,12 +21,13 @@ GameObject:
   - component: {fileID: 4795601118047396}
   - component: {fileID: 33539346470044826}
   - component: {fileID: 23662842053734306}
-  - component: {fileID: 136509165258706112}
+  - component: {fileID: 114921063923392414}
   - component: {fileID: 54645787452373346}
   - component: {fileID: 114892978694320024}
   - component: {fileID: 195676018167418152}
-  - component: {fileID: 114067658050880686}
-  - component: {fileID: 114076151137711294}
+  - component: {fileID: 136341979475230636}
+  - component: {fileID: 114075020480879716}
+  - component: {fileID: 82443043191256110}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Monster
@@ -41,8 +42,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1191179117899692}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.87, y: 1, z: -4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -25.91, y: 0.97, z: -14.1}
+  m_LocalScale: {x: 5, y: 3, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -88,7 +89,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1191179117899692}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 010722b744620464993dc86189ff8071, type: 3}
 --- !u!54 &54645787452373346
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -104,25 +105,102 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114067658050880686
-MonoBehaviour:
+--- !u!82 &82443043191256110
+AudioSource:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1191179117899692}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b96b29ef249846440a1f8a1fb664d5b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxVibrationTime: 5
-  minVibrationHeight: -0.2
-  maxVibrationHeight: 1.2
-  vibrationWidth: 0.5
-  vibrationPeriod: 25
-  vibrationAmplitude: 3
-  modelRadius: 0
---- !u!114 &114076151137711294
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &114075020480879716
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,8 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36cce50725fd4d1286a26b56a7e0584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stepFrequency: 1
-  rippleRange: 15
+  stepFrequency: 2
+  rippleRange: 10
   rippleThickness: 0.3
   rippleOffset: 0
   footstepClips: []
@@ -151,7 +229,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destination: {fileID: 0}
---- !u!136 &136509165258706112
+  breathing: {fileID: 8300000, guid: 223398a9570f8a44f82fb434f259bbe8, type: 3}
+  eatDistraction: {fileID: 8300000, guid: 8ff2cda0d0dc2de408770cc0df3ee261, type: 3}
+--- !u!114 &114921063923392414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1191179117899692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96b29ef249846440a1f8a1fb664d5b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVibrationTime: 2
+  minVibrationHeight: -0.2
+  maxVibrationHeight: 1.2
+  vibrationWidth: 0.2
+  vibrationPeriod: 25
+  vibrationAmplitude: 0.1
+  modelRadius: 0
+  baseColor: {r: 0, g: 0, b: 0, a: 0}
+  colorOffset: 0.5
+--- !u!136 &136341979475230636
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,10 +260,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
+  m_Radius: 0.29267627
+  m_Height: 0.6328379
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: -0.02619125, y: 0.014696658, z: 0.04141421}
 --- !u!195 &195676018167418152
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -173,7 +273,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5000001
-  m_Speed: 5
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
