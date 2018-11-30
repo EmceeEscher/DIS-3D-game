@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 76636adc27bcf48c5a0553fa4038e2eb
+guid: ad6f7d924be7c4e6e88db58d6422da95
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Maya
+  fontName: CompHand
   fontNames:
-  - Maya
+  - CompHand
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

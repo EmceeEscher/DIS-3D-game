@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: aaa07868b33684586a951a825508d4bc
+guid: 26810b9be992b4ec9b303da9f22b4dbd
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Guasmally
+  fontName: Rufscript
   fontNames:
-  - Guasmally
+  - Rufscript
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

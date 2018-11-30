@@ -29,5 +29,5 @@ Character controller code modified from UnityUtilities by Benno Lueders
 Footstep sounds from "Free Footsteps System" package by Pavel Cristian  
 Background images from "Dynamic Space Background Lite" package by Dinv Studio  
 Monster shader utilizes TV Static Shader by Unity Forum User dandeentremont  
-"Guasmally" font by Malre  
-"Maya" font by George Douros  
+"CompHand" font by j4p4n  
+"Rufscript" font by Hiran Venugopalan  
