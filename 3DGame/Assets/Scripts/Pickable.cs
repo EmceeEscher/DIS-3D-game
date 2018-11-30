@@ -27,6 +27,7 @@ public class Pickable : MonoBehaviour {
         col = GetComponent<Collider>();
         rbdy = GetComponent<Rigidbody>();
         renderer = GetComponent<Renderer>();
+        aud = GetComponent<AudioSource>();
         rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
     }
 
@@ -52,7 +53,6 @@ public class Pickable : MonoBehaviour {
     public bool IsPickedUp() { return pickedUp; }
 
     // Communicates to the object that this object is now being hit by the Raycast
-    // (see CheckInFront method in ObjectManager)
     public void OnPickup() {
 
         pickedUp = true;
@@ -64,17 +64,13 @@ public class Pickable : MonoBehaviour {
     }
 
     // The player would collide with the object
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.tag == "Player" && !hasBeenThrown)
-        {
-            OnPickup();
-        }
-    }
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.tag == "Player" && !hasBeenThrown)
+        // AND If the player is not carrying something
+        if (collider.tag == "Player" 
+            && !hasBeenThrown 
+            && collider.gameObject.GetComponent<ObjectManager>().HasItem() == false)
         {
             aud.Play(0);
             OnPickup();
@@ -89,17 +85,7 @@ public class Pickable : MonoBehaviour {
         col.isTrigger = false;
     }
 
-    // Use this for initialization
-    void Start () {
-        col = GetComponent<Collider>();
-        rbdy = GetComponent<Rigidbody>();
-        aud = GetComponent<AudioSource>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
 
-	}
   
     public bool HasBeenThrown()
     {
