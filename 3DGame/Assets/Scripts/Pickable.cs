@@ -9,11 +9,14 @@ public class Pickable : MonoBehaviour {
     public float rippleThickness = 1f;
     public float timeBetweenRipples = 2f;
     public Material materialAfterPickup;
+    public AudioClip pickupNoise;
+    public AudioClip eatenNoise;
 
     private float timeSinceLastRipple = 0f;
 
     private Collider collider;
     private Rigidbody rigidbody;
+    private GameObject soundChild;
     private AudioSource audioSource;
     private new Renderer renderer;
     private RippleManager rippleManager;
@@ -26,7 +29,8 @@ public class Pickable : MonoBehaviour {
     {
         collider = GetComponent<Collider>();
         rigidbody = GetComponent<Rigidbody>();
-        audioSource = GetComponent<AudioSource>();
+        soundChild = transform.GetChild(0).gameObject;
+        audioSource = soundChild.GetComponent<AudioSource>();
         renderer = GetComponent<Renderer>();
         rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
     }
@@ -34,14 +38,11 @@ public class Pickable : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("here0");
         if (hasBeenThrown)
         {
-            Debug.Log("here1");
             timeSinceLastRipple += Time.deltaTime;
             if (timeSinceLastRipple > timeBetweenRipples)
             {
-                Debug.Log("here2");
                 rippleManager.CreateRipple(
                                 transform.position.x,
                                 transform.position.z,
@@ -75,8 +76,19 @@ public class Pickable : MonoBehaviour {
             && !hasBeenThrown 
             && collider.gameObject.GetComponent<ObjectManager>().HasItem() == false)
         {
-            audioSource.Play(0);
+            audioSource.PlayOneShot(pickupNoise);
             OnPickup();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Monster" && hasBeenThrown)
+        {
+            soundChild.transform.SetParent(null);
+            audioSource.PlayOneShot(eatenNoise);
+            Destroy(soundChild.gameObject, 2f);
+            Destroy(gameObject);
         }
     }
 
