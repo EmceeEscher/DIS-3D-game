@@ -12,9 +12,9 @@ public class Pickable : MonoBehaviour {
 
     private float timeSinceLastRipple = 0f;
 
-    private Collider col;
-    private Rigidbody rbdy;
-    private AudioSource aud;
+    private Collider collider;
+    private Rigidbody rigidbody;
+    private AudioSource audioSource;
     private new Renderer renderer;
     private RippleManager rippleManager;
 
@@ -24,11 +24,10 @@ public class Pickable : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        col = GetComponent<Collider>();
-        rbdy = GetComponent<Rigidbody>();
-        aud = GetComponent<AudioSource>();
+        collider = GetComponent<Collider>();
+        rigidbody = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         renderer = GetComponent<Renderer>();
-        aud = GetComponent<AudioSource>();
         rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
     }
 
@@ -62,7 +61,7 @@ public class Pickable : MonoBehaviour {
         pickedUp = true;
 
         // Disable the collider and rigidbody when picked up.
-        rbdy.isKinematic = true ;
+        rigidbody.isKinematic = true ;
 
         renderer.material = materialAfterPickup;
     }
@@ -76,7 +75,7 @@ public class Pickable : MonoBehaviour {
             && !hasBeenThrown 
             && collider.gameObject.GetComponent<ObjectManager>().HasItem() == false)
         {
-            aud.Play(0);
+            audioSource.Play(0);
             OnPickup();
         }
     }
@@ -89,10 +88,10 @@ public class Pickable : MonoBehaviour {
     public void Throw(Vector3 throwForce)
     {
         hasBeenThrown = true;
-        rbdy.useGravity = true;
-        rbdy.isKinematic = false;
-        rbdy.AddForce(throwForce);
-        col.isTrigger = false;
+        rigidbody.useGravity = true;
+        rigidbody.isKinematic = false;
+        rigidbody.AddForce(throwForce);
+        collider.isTrigger = false;
     }
 
   
