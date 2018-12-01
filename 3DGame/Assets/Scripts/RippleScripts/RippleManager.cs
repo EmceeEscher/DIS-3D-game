@@ -24,7 +24,10 @@ public class Ripple {
 
 public class RippleManager : MonoBehaviour {
 
+    [Tooltip("Max number of ripples allowed in the scene.")]
     public int maxNumRipples = 1;
+
+    [Tooltip("Traveling speed of each ripple.")]
     public float rippleSpeed = 1f;
 
     List<Ripple> ripples;
@@ -41,8 +44,6 @@ public class RippleManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        DebugRipple(); //TODO: remove this
-
         foreach (Ripple ripple in ripples) {
             if (ripple.isActive) {
                 ripple.currRadius += Time.deltaTime * rippleSpeed;
@@ -71,12 +72,5 @@ public class RippleManager : MonoBehaviour {
 
     public List<Ripple> getRipples() {
         return ripples;
-    }
-
-    void DebugRipple() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            CreateRipple(transform.position.x, transform.position.y, 100f, 0.5f, this.tag);
-        }
-        //Debug.Log("ripple[0] currRadius: " + ripples[0].currRadius);
     }
 }
