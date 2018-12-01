@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4751020754546198}
   - component: {fileID: 33846293466630708}
   - component: {fileID: 23325582849129614}
-  - component: {fileID: 65900759331974332}
   - component: {fileID: 114840317337603524}
   - component: {fileID: 136189124549752800}
   - component: {fileID: 208149391841153376}
@@ -39,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1680844964390558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.9, y: 17.39774, z: -5.5}
+  m_LocalPosition: {x: -23.910402, y: 17.39774, z: -7.2664127}
   m_LocalScale: {x: 0.02, y: 0.012, z: 0.02}
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,18 +86,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1680844964390558}
   m_Mesh: {fileID: 4300000, guid: 67f14f0cedd8808438f2a25afccb8d3d, type: 3}
---- !u!65 &65900759331974332
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1680844964390558}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 308.4096, y: 509.08646, z: 323.7376}
-  m_Center: {x: 30.775135, y: 254.54323, z: 6.496834}
 --- !u!114 &114840317337603524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,7 +103,7 @@ MonoBehaviour:
   vibrationWidth: 0.5
   vibrationPeriod: 25
   vibrationAmplitude: 3
-  modelRadius: 0
+  modelRadius: 3
   baseColor: {r: 0.15432537, g: 0.6415094, b: 0.4909873, a: 0}
   colorOffset: 0.6
 --- !u!136 &136189124549752800
