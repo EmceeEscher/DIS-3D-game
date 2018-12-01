@@ -119,8 +119,7 @@ Shader "Ripples/MonsterRippleShader"
 			{
 				fixed4 col = fixed4(0,0,0,0);
                 //col = fixed4(0.5, 0.5, 0.5, 1); //DEBUG: uncomment to make monster visible
-
-				// TODO use position information to change shader
+                
 				fixed4 local = vOutput.localPosition;
 
 				if (_VibrationProgress > -1.0) {
@@ -146,7 +145,6 @@ Shader "Ripples/MonsterRippleShader"
     					col = fixed4(stat.xyz, 1.0);
     					// end static 
                     }
-                    col.a = 1.0;
 				}
 
 				return col;
