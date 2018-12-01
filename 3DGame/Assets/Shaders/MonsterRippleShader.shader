@@ -24,7 +24,10 @@ Shader "Ripples/MonsterRippleShader"
 	// start first subshader (there is only one, but there could be multible)
 		SubShader
 	{
-		Tags { "RenderType" = "Opaque" }
+        Tags {"Queue"="Transparent" "RenderType"="Transparent" } 
+        
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
 
 		Pass
 		{
@@ -143,6 +146,7 @@ Shader "Ripples/MonsterRippleShader"
     					col = fixed4(stat.xyz, 1.0);
     					// end static 
                     }
+                    col.a = 1.0;
 				}
 
 				return col;
