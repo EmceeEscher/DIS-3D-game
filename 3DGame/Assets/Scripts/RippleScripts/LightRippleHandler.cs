@@ -33,4 +33,9 @@ public class LightRippleHandler : MonoBehaviour {
     {
         renderer.material.SetColor("_BaseColor", invisibleColor);
     }
+
+    public void TurnOffPermanently()
+    {
+        transparentColor = invisibleColor;
+    }
 }

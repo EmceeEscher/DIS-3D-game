@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxNumRipples: 5
-  rippleSpeed: 4
+  rippleSpeed: 6
 --- !u!114 &114680650865425262
 MonoBehaviour:
   m_ObjectHideFlags: 1
