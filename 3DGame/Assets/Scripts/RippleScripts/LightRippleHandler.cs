@@ -16,7 +16,7 @@ public class LightRippleHandler : MonoBehaviour {
     void Start () {
         _renderer = GetComponent<Renderer>();
         transparentColor = new Color(baseColor.r, baseColor.g, baseColor.b, transparency);
-        _renderer.material.SetColor("_BaseColor", invisibleColor);
+        _renderer.material.SetColor("_Color", invisibleColor);
     }
     
     // Update is called once per frame
@@ -26,12 +26,12 @@ public class LightRippleHandler : MonoBehaviour {
 
     public void TurnOnLight()
     {
-        _renderer.material.SetColor("_BaseColor", transparentColor);
+        _renderer.material.SetColor("_Color", transparentColor);
     }
 
     public void TurnOffLight()
     {
-        _renderer.material.SetColor("_BaseColor", invisibleColor);
+        _renderer.material.SetColor("_Color", invisibleColor);
     }
 
     public void TurnOffPermanently()

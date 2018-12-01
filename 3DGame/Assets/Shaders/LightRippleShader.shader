@@ -3,9 +3,7 @@
    // defining the main properties as exposed in the inspector
     Properties
     {
-        _BaseColor ("base color of light column", Color) = (0,1,0,1)
-        _Transparency ("transparency of light column", float) = 0.5
-        
+        _Color ("Color of light column", Color) = (0,1,0,1)
     }
     // start first subshader (there is only one, but there could be multible)
     SubShader
@@ -32,17 +30,14 @@
             struct vertexOutput
             {
                 float4 position : SV_POSITION;
-                float4 localPosition : POSITION1;
             };
 			
-            float4 _BaseColor;         
-			float _Transparency;
+            float4 _Color;         
 
             vertexOutput vertexShader (vertexInput vInput)
             {
                 vertexOutput vOutput;
                 
-                vOutput.localPosition = vInput.position;
                 vOutput.position = vInput.position;
                 
                 // local space into world space transformation:
@@ -58,7 +53,7 @@
             
             fixed4 fragmentShader (vertexOutput vOutput) : SV_Target
             {
-                fixed4 col = _BaseColor;
+                fixed4 col = _Color;
                 
                 return col;
             }
