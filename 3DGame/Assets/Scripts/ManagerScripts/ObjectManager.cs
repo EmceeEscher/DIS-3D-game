@@ -20,7 +20,6 @@ public class ObjectManager : MonoBehaviour {
 
     public void Throw(GameObject item) { 
         item.GetComponent<Pickable>().Throw(transform.forward * throwForce + transform.up * throwForce);
-        GameObject.FindWithTag("Monster").GetComponent<MonsterMove>().setTimer(15.0f);
     }
 
 

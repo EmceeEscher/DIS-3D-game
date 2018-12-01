@@ -16,7 +16,6 @@ public class MonsterMove : MonoBehaviour {
 
     GameObject player;
     GameObject distraction;
-    float timer;
     bool hasEatenPlayer = false;
 
     NavMeshAgent _navMeshAgent;
@@ -35,18 +34,11 @@ public class MonsterMove : MonoBehaviour {
 
         player = GameObject.FindWithTag("Player");
 
-        timer = -1.0f;
-
         saveSpeed = _navMeshAgent.speed;
         SetDestination();
 
         _fadeoutManager = GameObject.FindWithTag("FadeoutManager").GetComponent<FadeoutManager>();
 	}
-
-    public void setTimer(float time)
-    {
-        timer = time;
-    }
 
     private void SetDestination()
     {
