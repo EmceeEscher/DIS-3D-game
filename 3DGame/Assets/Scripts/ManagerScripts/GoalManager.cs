@@ -4,33 +4,37 @@ using UnityEngine;
 
 public class GoalManager : MonoBehaviour {
 
-    public int numRequiredWaypoints = 4;
+    [Tooltip("Number of goal objects that must be collected to spawn exit portal.")]
+    public int numRequiredGoalObjects = 4;
+
+    [Tooltip("Prefab of exit portal to leave level.")]
     public GameObject exitPortal;
+
+    [Tooltip("Location where exit portal will spawn.")]
+    public Vector3 exitPortalLocation = new Vector3(0, 1, 0);
+
+    [Tooltip("Sound to play when portal opens.")]
     public AudioClip portalOpenSound;
-    public AudioClip objectColletionSound;
 
     int numObtainedWaypoints = 0;
     bool exitPortalSpawned = false;
-    AudioSource audioSource;
+    AudioSource _audioSource;
 
 	// Use this for initialization
 	void Start () {
-        audioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (numObtainedWaypoints >= numRequiredWaypoints && !exitPortalSpawned) {
+        if (numObtainedWaypoints >= numRequiredGoalObjects && !exitPortalSpawned) {
             exitPortalSpawned = true;
-            Instantiate(exitPortal, new Vector3(0, 1, 0), transform.rotation);
-            audioSource.PlayOneShot(portalOpenSound);
+            Instantiate(exitPortal, exitPortalLocation, transform.rotation);
+            _audioSource.PlayOneShot(portalOpenSound);
         }
 	}
 
     public void incrementObtainedWaypoints() {
         numObtainedWaypoints++;
-        if (numObtainedWaypoints < numRequiredWaypoints) {
-            audioSource.PlayOneShot(objectColletionSound);
-        }
     }
 }

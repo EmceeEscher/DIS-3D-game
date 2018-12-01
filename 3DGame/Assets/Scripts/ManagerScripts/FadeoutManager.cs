@@ -6,8 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class FadeoutManager : MonoBehaviour {
 
+    [Tooltip("Image to show on successful ending.")]
     public Image fadeoutEndingImage;
+
+    [Tooltip("Image to show on death.")]
     public Image fadeoutDeathImage;
+
+
+    [Tooltip("Time for image to fully fade in.")]
     public float fadeoutTime = 2.0f;
 
     // Use this for initialization
