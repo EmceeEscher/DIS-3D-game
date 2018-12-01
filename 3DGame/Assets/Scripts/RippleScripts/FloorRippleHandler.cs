@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class FloorRippleHandler : MonoBehaviour {
 
+    [Tooltip("Color of ripples made by the player.")]
     public Color playerRippleColor;
+
+    [Tooltip("Color of ripples made by the monster.")]
     public Color monsterRippleColor;
-    public Color throwableRippleColor;
+
+    [Tooltip("Color of ripples made by distractors.")]
+    public Color distractorRippleColor;
 
     RippleManager rippleManager;
     int maxNumRipples;
-    Renderer renderer;
+    Renderer _renderer;
     Vector4[] rippleData;
     Color[] rippleColors;
     Color transparent = new Color(0f, 0f, 0f, 0f);
@@ -21,7 +26,7 @@ public class FloorRippleHandler : MonoBehaviour {
 
         maxNumRipples = rippleManager.maxNumRipples;
 
-        renderer = GetComponent<Renderer>();
+        _renderer = GetComponent<Renderer>();
 
         rippleData = new Vector4[maxNumRipples];
         rippleColors = new Color[maxNumRipples];
@@ -29,7 +34,7 @@ public class FloorRippleHandler : MonoBehaviour {
             rippleData[i] = new Vector4(0f, 0f, 0f, 0f);
             rippleColors[i] = transparent;
         }
-        renderer.material.SetInt("_NumRipples", maxNumRipples);
+        _renderer.material.SetInt("_NumRipples", maxNumRipples);
     }
 	
 	// Update is called once per frame
@@ -39,7 +44,6 @@ public class FloorRippleHandler : MonoBehaviour {
         for (int i = 0; i < maxNumRipples; i++)
         {
             Ripple ripple = ripples[i];
-            //Debug.Log(ripple.sourceTag);
             if (ripple.isActive)
             {
                 rippleData[i].x = ripple.centerX;
@@ -56,7 +60,7 @@ public class FloorRippleHandler : MonoBehaviour {
                 }
                 else
                 {
-                    rippleColors[i] = throwableRippleColor;
+                    rippleColors[i] = distractorRippleColor;
                 }
             } else {
                 rippleData[i].x = 0f;
@@ -66,7 +70,7 @@ public class FloorRippleHandler : MonoBehaviour {
                 rippleColors[i] = transparent;
             }
         }
-        renderer.material.SetVectorArray("_Ripples", rippleData);
-        renderer.material.SetColorArray("_RippleColors", rippleColors);
+        _renderer.material.SetVectorArray("_Ripples", rippleData);
+        _renderer.material.SetColorArray("_RippleColors", rippleColors);
 	}
 }

@@ -5,36 +5,49 @@ using UnityEngine;
 
 public class Pickable : MonoBehaviour {
 
+    [Tooltip("Radius of ripples created after it's thrown.")]
     public float rippleRadius = 10f;
+
+    [Tooltip("Thickness of ripples created after it's thrown.")]
     public float rippleThickness = 1f;
+
+    [Tooltip("Time between ripples created after it's thrown.")]
     public float timeBetweenRipples = 2f;
+
+    [Tooltip("Maximum time it will last after it's thrown.")]
     public float maxTimeAfterThrown = 20f;
+
+    [Tooltip("Material to use after it's picked up (so it doesn't ripple anymore.")]
     public Material materialAfterPickup;
+
+    [Tooltip("Noise to make when it's picked up.")]
     public AudioClip pickupNoise;
+
+    [Tooltip("Noise to make when it's eaten by the monster")]
     public AudioClip eatenNoise;
 
-    private float timeSinceLastRipple = 0f;
-    private float timeSinceThrown = 0f;
+    float timeSinceLastRipple = 0f;
+    float timeSinceThrown = 0f;
 
-    private Collider collider;
-    private Rigidbody rigidbody;
-    private GameObject soundChild;
-    private AudioSource audioSource;
-    private new Renderer renderer;
-    private RippleManager rippleManager;
+    Collider _collider;
+    Rigidbody _rigidbody;
+    GameObject soundChild;
+    AudioSource _audioSource;
+    Renderer _renderer;
+    RippleManager _rippleManager;
 
-    private bool pickedUp = false;
-    private bool hasBeenThrown = false;
+    bool pickedUp = false;
+    bool hasBeenThrown = false;
 
     // Use this for initialization
     void Start()
     {
-        collider = GetComponent<Collider>();
-        rigidbody = GetComponent<Rigidbody>();
+        _collider = GetComponent<Collider>();
+        _rigidbody = GetComponent<Rigidbody>();
         soundChild = transform.GetChild(0).gameObject;
-        audioSource = soundChild.GetComponent<AudioSource>();
-        renderer = GetComponent<Renderer>();
-        rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
+        _audioSource = soundChild.GetComponent<AudioSource>();
+        _renderer = GetComponent<Renderer>();
+        _rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
     }
 
     // Update is called once per frame
@@ -50,7 +63,7 @@ public class Pickable : MonoBehaviour {
             }
             else if (timeSinceLastRipple > timeBetweenRipples)
             {
-                rippleManager.CreateRipple(
+                _rippleManager.CreateRipple(
                                 transform.position.x,
                                 transform.position.z,
                                 rippleRadius,
@@ -61,17 +74,19 @@ public class Pickable : MonoBehaviour {
         }
     }
 
-    public bool IsPickedUp() { return pickedUp; }
+    public bool IsPickedUp() 
+    { 
+        return pickedUp; 
+    }
 
-    // Communicates to the object that this object is now being hit by the Raycast
     public void OnPickup() {
 
         pickedUp = true;
 
         // Disable the collider and rigidbody when picked up.
-        rigidbody.isKinematic = true ;
+        _rigidbody.isKinematic = true ;
 
-        renderer.material = materialAfterPickup;
+        _renderer.material = materialAfterPickup;
 
         GetComponentInChildren<LightRippleHandler>().TurnOffPermanently();
     }
@@ -85,7 +100,7 @@ public class Pickable : MonoBehaviour {
             && !hasBeenThrown 
             && collider.gameObject.GetComponent<ObjectManager>().HasItem() == false)
         {
-            audioSource.PlayOneShot(pickupNoise);
+            _audioSource.PlayOneShot(pickupNoise);
             OnPickup();
         }
     }
@@ -107,16 +122,20 @@ public class Pickable : MonoBehaviour {
     public void Throw(Vector3 throwForce)
     {
         hasBeenThrown = true;
-        rigidbody.useGravity = true;
-        rigidbody.isKinematic = false;
-        rigidbody.AddForce(throwForce);
-        collider.isTrigger = false;
+
+        // turn on collider again so it can collide with the ground and monster
+        _rigidbody.useGravity = true;
+        _rigidbody.isKinematic = false;
+        _collider.isTrigger = false;
+
+        _rigidbody.AddForce(throwForce);
     }
 
     private void GetEaten()
     {
+        // deparent sound child before playing so it will play after parent has been deleted
         soundChild.transform.SetParent(null);
-        audioSource.PlayOneShot(eatenNoise);
+        _audioSource.PlayOneShot(eatenNoise);
         Destroy(soundChild.gameObject, 2f);
         Destroy(gameObject);
     }

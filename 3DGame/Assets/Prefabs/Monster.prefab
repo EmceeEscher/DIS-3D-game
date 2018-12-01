@@ -228,8 +228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c470a66516e994da48f385575a0d6ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destination: {fileID: 0}
   eatDistraction: {fileID: 8300000, guid: 8ff2cda0d0dc2de408770cc0df3ee261, type: 3}
+  destination: {fileID: 0}
 --- !u!114 &114921063923392414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,7 +247,7 @@ MonoBehaviour:
   vibrationWidth: 0.2
   vibrationPeriod: 25
   vibrationAmplitude: 0.1
-  modelRadius: 0
+  modelRadius: 3
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   colorOffset: 0.5
 --- !u!136 &136341979475230636

@@ -5,59 +5,28 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class ObjectManager : MonoBehaviour {
 
-    // Only one object to be held
-    public GameObject hand = null;
+    // Object currently being held
+    [HideInInspector]
+    public GameObject hand;
 
-    public float visionDistance = 5F;
-    public LayerMask layerMask;
-    public float zOffset = 1F, xOffset = 0.5F, yOffset = 0.5F;
+    [Tooltip("How far away from the player items are held.")]
+    public Vector3 heldOffset = new Vector3(0.5f, 0.5f, 1.0f);
+
+    [Tooltip("How hard items are thrown.")]
     public float throwForce = 10F;
             
-
     void Start() {
 
     }
 
-    public void Throw(GameObject item) { 
-        item.GetComponent<Pickable>().Throw(transform.forward * throwForce + transform.up * throwForce);
-        GameObject.FindWithTag("Monster").GetComponent<MonsterMove>().setTimer(15.0f);
-    }
-
-
-    public bool HasItem() {
-        return hand != null;
-    }
-
-
-    private void OnTriggerEnter(Collider collider)
-    {
-        // if hand is empty, object is pickable, and it hasn't been thrown.
-        if (collider.gameObject.GetComponent<Pickable>() != null
-            && !collider.gameObject.GetComponent<Pickable>().HasBeenThrown()
-            && HasItem() == false)
-        {
-
-            hand = collider.gameObject;
-        }
-    }
-
-    private void HoldItem(GameObject item) {
-        // put item to the position of the player plus a bit to the left.
-        item.transform.position = transform.position 
-            + (zOffset * transform.forward) 
-            + (xOffset * transform.right) 
-            + (yOffset * transform.up);
-        // locks rotation I think
-        item.transform.rotation = new Quaternion(0.0f, transform.rotation.y, 0.0f, transform.rotation.w);
-    }
-
     // Update is called once per frame
-    void Update () {
-
-        if (HasItem()) {
+    void Update()
+    {
+        if (HasItem())
+        {
             HoldItem(hand);
         }
-        // if E is pressed and there's something in hand,
+        // if E is pressed and there's something in hand, throw it
         if (Input.GetKey(KeyCode.E) && HasItem())
         {
             GameObject item = hand;
@@ -65,4 +34,36 @@ public class ObjectManager : MonoBehaviour {
             hand = null;
         }
     }
+
+    public bool HasItem()
+    {
+        return hand != null;
+    }
+
+    void Throw(GameObject item) { 
+        item.GetComponent<Pickable>().Throw(transform.forward * throwForce + transform.up * throwForce);
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        // should only pickup if hand is empty, object is pickable, and it hasn't already been thrown.
+        if (collider.gameObject.GetComponent<Pickable>() != null
+            && !collider.gameObject.GetComponent<Pickable>().HasBeenThrown()
+            && HasItem() == false)
+        {
+            hand = collider.gameObject;
+        }
+    }
+
+    void HoldItem(GameObject item) {
+        // put item to the position of the player plus a bit out, up, and to the right so it's visible.
+        item.transform.position = transform.position
+            + (heldOffset.z * transform.forward)
+            + (heldOffset.x * transform.right)
+            + (heldOffset.y * transform.up);
+
+        // locks rotation of pickable
+        item.transform.rotation = new Quaternion(0.0f, transform.rotation.y, 0.0f, transform.rotation.w);
+    }
+
 }
