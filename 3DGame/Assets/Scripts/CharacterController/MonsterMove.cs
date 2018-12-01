@@ -6,32 +6,32 @@ using UnityEngine.AI;
 
 public class MonsterMove : MonoBehaviour {
 
+    [Tooltip("Sound effect to play when eating distraction/player")]
+    public AudioClip eatDistraction;
+
     [SerializeField]
-    Transform _destination;
+    Transform destination;
 
     float saveSpeed;
 
-    private GameObject player;
-    private GameObject distraction;
-    private float timer;
+    GameObject player;
+    GameObject distraction;
+    float timer;
     bool hasEatenPlayer = false;
 
     NavMeshAgent _navMeshAgent;
     CharacterFunctionality _characterFunctionality;
-    Rigidbody rigidbody;
-    FadeoutManager fadeoutManager;
-
-    private AudioSource audioSource;
-    //public AudioClip breathing;
-    public AudioClip eatDistraction;
+    Rigidbody _rigidbody;
+    FadeoutManager _fadeoutManager;
+    AudioSource _audioSource;
 
 	// Use this for initialization
 	void Start () {
-        _navMeshAgent = this.GetComponent<NavMeshAgent>();
-        _characterFunctionality = this.GetComponent<CharacterFunctionality>();
-        rigidbody = GetComponent<Rigidbody>();
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+        _characterFunctionality = GetComponent<CharacterFunctionality>();
+        _rigidbody = GetComponent<Rigidbody>();
 
-        audioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
 
         player = GameObject.FindWithTag("Player");
 
@@ -40,7 +40,7 @@ public class MonsterMove : MonoBehaviour {
         saveSpeed = _navMeshAgent.speed;
         SetDestination();
 
-        fadeoutManager = GameObject.FindWithTag("FadeoutManager").GetComponent<FadeoutManager>();
+        _fadeoutManager = GameObject.FindWithTag("FadeoutManager").GetComponent<FadeoutManager>();
 	}
 
     public void setTimer(float time)
@@ -64,26 +64,26 @@ public class MonsterMove : MonoBehaviour {
 
         if (distraction != null)
         {
-            _destination = distraction.transform;
+            destination = distraction.transform;
         }
         else
         {
-            _destination = player.transform;    
+            destination = player.transform;    
         }
         
         if (distraction == null && !player.GetComponent<CharacterFunctionality>().isMoving)
         {
             _characterFunctionality.isMoving = false;
             _navMeshAgent.speed = 0;
-            rigidbody.velocity = Vector3.zero;
+            _rigidbody.velocity = Vector3.zero;
         }
         else {
             _characterFunctionality.isMoving = true;
             _navMeshAgent.speed = saveSpeed;
         }
 
-        if(_destination != null) {
-            Vector3 targetVector = _destination.position;
+        if(destination != null) {
+            Vector3 targetVector = destination.position;
             _navMeshAgent.SetDestination(targetVector);
         }
     }
@@ -103,8 +103,8 @@ public class MonsterMove : MonoBehaviour {
     {
         if (collision.collider.CompareTag("Player") && !hasEatenPlayer)
         {
-            audioSource.PlayOneShot(eatDistraction);
-            StartCoroutine(fadeoutManager.FadeoutDeath());
+            _audioSource.PlayOneShot(eatDistraction);
+            StartCoroutine(_fadeoutManager.FadeoutDeath());
             hasEatenPlayer = true;
         }
     }

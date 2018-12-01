@@ -20,7 +20,6 @@ Models from Google Poly:
 Sounds from Freesound:  
 "Space choir" by trilly82  
 "Magical portal open" by alanmcki  
-"Ding" by Aiwha  
 "Squelch, muddy and squishy" by redafs  
 "LETTUCE_CRUNCH_002" by JoelAudio  
 "ambient_hell" by Asteroiderer  
