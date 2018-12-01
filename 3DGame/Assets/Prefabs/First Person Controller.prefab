@@ -335,13 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 0}
-  visionDistance: 5
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  zOffset: 1
-  xOffset: 0.5
-  yOffset: 0.5
+  heldOffset: {x: 0.5, y: 0.2, z: 1}
   throwForce: 500
 --- !u!114 &114697572347737506
 MonoBehaviour:
