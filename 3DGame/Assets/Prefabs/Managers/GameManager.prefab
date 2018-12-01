@@ -361,7 +361,6 @@ MonoBehaviour:
   exitPortal: {fileID: 1588679121494474, guid: 60334ec73f76f4109835dcf38e3d887c, type: 2}
   exitPortalLocation: {x: 0, y: 1, z: 0}
   portalOpenSound: {fileID: 8300000, guid: 7e2e27ecd37b345d1b9fe4b8ea0fdf51, type: 3}
-  objectCollectionSound: {fileID: 0}
 --- !u!114 &114835577564569404
 MonoBehaviour:
   m_ObjectHideFlags: 1
