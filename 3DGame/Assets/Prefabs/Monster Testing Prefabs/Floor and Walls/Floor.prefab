@@ -110,4 +110,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRippleColor: {r: 0, g: 0.9764706, b: 1, a: 0}
   monsterRippleColor: {r: 1, g: 0, b: 0, a: 0}
-  throwableRippleColor: {r: 0, g: 0.34901962, b: 1, a: 0}
+  distractorRippleColor: {r: 0, g: 0, b: 1, a: 0}
