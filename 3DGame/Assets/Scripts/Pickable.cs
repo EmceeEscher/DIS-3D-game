@@ -72,6 +72,8 @@ public class Pickable : MonoBehaviour {
         rigidbody.isKinematic = true ;
 
         renderer.material = materialAfterPickup;
+
+        GetComponentInChildren<LightRippleHandler>().TurnOffPermanently();
     }
 
 

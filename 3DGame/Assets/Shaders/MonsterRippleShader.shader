@@ -24,7 +24,10 @@ Shader "Ripples/MonsterRippleShader"
 	// start first subshader (there is only one, but there could be multible)
 		SubShader
 	{
-		Tags { "RenderType" = "Opaque" }
+        Tags {"Queue"="Transparent" "RenderType"="Transparent" } 
+        
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
 
 		Pass
 		{
@@ -116,8 +119,7 @@ Shader "Ripples/MonsterRippleShader"
 			{
 				fixed4 col = fixed4(0,0,0,0);
                 //col = fixed4(0.5, 0.5, 0.5, 1); //DEBUG: uncomment to make monster visible
-
-				// TODO use position information to change shader
+                
 				fixed4 local = vOutput.localPosition;
 
 				if (_VibrationProgress > -1.0) {

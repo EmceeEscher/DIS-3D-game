@@ -38,6 +38,8 @@ public class ObjectRippleHandler : MonoBehaviour {
     protected float currVibrationTime = 0.0f;
     protected bool isVibrating = false;
 
+    LightRippleHandler lightRippleHandler;
+
 
     // Use this for initialization
     void Start()
@@ -56,6 +58,12 @@ public class ObjectRippleHandler : MonoBehaviour {
         renderer.material.SetFloat("_ColorOffset", colorOffset);
 
         rippleManager = GameObject.FindWithTag("RippleManager").GetComponent<RippleManager>();
+
+        lightRippleHandler = GetComponentInChildren<LightRippleHandler>();
+        if (lightRippleHandler != null)
+        {
+            lightRippleHandler.baseColor = baseColor;
+        }
     }
 
     public virtual void Visuals()
@@ -65,6 +73,10 @@ public class ObjectRippleHandler : MonoBehaviour {
             if (currVibrationTime > maxVibrationTime) {
                 isVibrating = false;
                 renderer.material.SetFloat("_VibrationProgress", -1.0f);
+                if (lightRippleHandler != null)
+                {
+                    lightRippleHandler.TurnOffLight();
+                }
             }
             else {
                 currVibrationTime += Time.deltaTime;
@@ -73,6 +85,10 @@ public class ObjectRippleHandler : MonoBehaviour {
                                                minVibrationHeight,
                                                maxVibrationHeight,
                                                (currVibrationTime / maxVibrationTime)));
+                if (lightRippleHandler != null)
+                {
+                    lightRippleHandler.TurnOnLight();
+                }
             }
         }
     }
