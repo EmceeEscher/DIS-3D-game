@@ -1,5 +1,5 @@
 # DIS-3D-game
-3D game project for DIS
+3D game project for DIS.
 
 Developed by:  
 Jacob Brunette  
