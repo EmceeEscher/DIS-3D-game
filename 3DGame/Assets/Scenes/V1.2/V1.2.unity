@@ -6138,12 +6138,12 @@ PrefabInstance:
     - target: {fileID: 114932145785336864, guid: eddcca6f2143a0944be83ab60522ec2e,
         type: 3}
       propertyPath: sensitivityX
-      value: 7.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114932145785336864, guid: eddcca6f2143a0944be83ab60522ec2e,
         type: 3}
       propertyPath: sensitivityY
-      value: 7.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114932145785336864, guid: eddcca6f2143a0944be83ab60522ec2e,
         type: 3}

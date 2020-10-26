@@ -38,18 +38,18 @@ public class MouseLook : MonoBehaviour
     void Update()
     {
         if (axes == RotationAxes.MouseXAndY) {
-            float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
+            float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * MouseSettings.Instance.sensitivityX;
 
-            rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+            rotationY += Input.GetAxis("Mouse Y") * MouseSettings.Instance.sensitivityY;
             rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
 
             transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
         }
         else if (axes == RotationAxes.MouseX) {
-            transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
+            transform.Rotate(0, Input.GetAxis("Mouse X") * MouseSettings.Instance.sensitivityX, 0);
         }
         else {
-            rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+            rotationY += Input.GetAxis("Mouse Y") * MouseSettings.Instance.sensitivityY;
             rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
 
             transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
@@ -57,14 +57,14 @@ public class MouseLook : MonoBehaviour
 
         if (Input.GetButtonUp("SensUp"))
         {
-            sensitivityX += sensitivityChange;
-            sensitivityY += sensitivityChange;
+            MouseSettings.Instance.sensitivityX += sensitivityChange;
+            MouseSettings.Instance.sensitivityY += sensitivityChange;
         } 
 
         if (Input.GetButtonDown("SensDown"))
         {
-            sensitivityX -= sensitivityChange;
-            sensitivityY -= sensitivityChange;
+            MouseSettings.Instance.sensitivityX -= sensitivityChange;
+            MouseSettings.Instance.sensitivityY -= sensitivityChange;
         }
     }
 
@@ -73,5 +73,7 @@ public class MouseLook : MonoBehaviour
         // Make the rigid body not change rotation
         if (GetComponent<Rigidbody>())
             GetComponent<Rigidbody>().freezeRotation = true;
+
+        MouseSettings settings = MouseSettings.Instance;
     }
 }
