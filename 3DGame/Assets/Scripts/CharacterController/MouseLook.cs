@@ -25,6 +25,7 @@ public class MouseLook : MonoBehaviour
     public RotationAxes axes = RotationAxes.MouseXAndY;
     public float sensitivityX = 15F;
     public float sensitivityY = 15F;
+    public float sensitivityChange = 0.3f;
 
     public float minimumX = -360F;
     public float maximumX = 360F;
@@ -52,6 +53,18 @@ public class MouseLook : MonoBehaviour
             rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
 
             transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
+        }
+
+        if (Input.GetButtonUp("SensUp"))
+        {
+            sensitivityX += sensitivityChange;
+            sensitivityY += sensitivityChange;
+        } 
+
+        if (Input.GetButtonDown("SensDown"))
+        {
+            sensitivityX -= sensitivityChange;
+            sensitivityY -= sensitivityChange;
         }
     }
 
